@@ -218,24 +218,24 @@ class Auth extends CI_Controller
 	public function login_user()
 	{
 		$this->form_validation->set_rules('email', 'Email', 'required|trim', ['required' => 'email tidak boleh kosong']);
-        $this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'password tidak boleh kosong']);
+		// $this->form_validation->set_rules('username', 'Username', 'required|trim', ['required' => 'nama pengguna tidak boleh kosong']);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'password tidak boleh kosong']);
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('Auth/page/v_login_user');
-        } else {
-            $this->proses_login_user();
-        }
-	
+		if ($this->form_validation->run() == false) {
+			$this->load->view('Auth/page/v_login_user');
+		} else {
+			$this->proses_login_user();
+		}
 	}
 
 	private function proses_login_user()
 	{
 		$email = $this->input->post('email');
-		//$username = $this->input->post('username');
+		$username = $this->input->post('email');
 		$password = $this->input->post('password');
 
 		$pengguna = $this->db->get_where('tb_user', ['email' => $email])->row_array();
-		//$pengguna = $this->db->get_where('tb_user', ['username' => $username])->row_array();
+		$pengguna = $this->db->get_where('tb_user', ['username' => $username])->row_array();
 		$cekpass = $this->db->get_where('tb_user', array('password' => $password));
 
 
@@ -248,7 +248,7 @@ class Auth extends CI_Controller
 
 					$data = [
 						'email' => $pengguna['email'],
-						//'username' => $pengguna['username'],
+						'username' => $pengguna['username'],
 						'foto' => $pengguna['foto']
 					];
 					$data['logged_in'] = TRUE;
@@ -321,5 +321,14 @@ class Auth extends CI_Controller
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Anda berhasil di simpan</div>');
 		redirect('Auth/loading');
+	}
+
+	public function logout_user()
+	{
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('email');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">anda telah logout</div>');
+		redirect('frontoffice/Beranda');
 	}
 }

@@ -30,7 +30,7 @@
                             <form action="<?= base_url('Auth/login_user') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="sr-only">Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Email / Nama Pengguna" required>
+                                    <input type="text" name="email" class="form-control" placeholder="Email" required>
                                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                 </div>
                                 <div class="form-group mb-4">

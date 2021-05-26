@@ -46,11 +46,11 @@
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu">
                     <span class="dropdown-item dropdown-header"><?= $this->session->userdata('username') ?></span>
                     <div class="dropdown-divider"></div>
-                    <a href="<?= base_url('Auth/login_user') ?>" class="dropdown-item">
-                        <i class="fa fa-sign-in" style="color: black;"></i> Login
+                    <a href="<?= base_url('Auth/logout_user') ?>" class="dropdown-item">
+                        <i class="fa fa-sign-out" style="color: black;"></i> Log out
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
+                    <a href="<?= base_url('frontoffice/Profile') ?>" class="dropdown-item">
                         <i class="fa fa-pencil-square-o" style="color: black;"></i> Profil Saya
                     </a>
                 </div>

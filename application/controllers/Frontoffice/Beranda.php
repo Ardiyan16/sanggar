@@ -22,6 +22,15 @@ class Beranda extends CI_Controller
 		$this->load->view('frontoffice/style/v_footer', $data);
     }
 
+    public function beranda_anggota()
+    {
+        $data['judul'] = 'Beranda';
+        $this->load->view('frontoffice/style/v_header', $data);
+        $this->load->view('frontoffice/style/v_navbar_user', $data);
+		$this->load->view('frontoffice/page2/v_beranda_anggota', $data);
+		$this->load->view('frontoffice/style/v_footer', $data);
+    }
+
     public function beranda_umum()
     {
         $data['judul'] = 'Beranda';
