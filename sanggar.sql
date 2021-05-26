@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2021 at 01:47 PM
--- Server version: 10.5.9-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: May 26, 2021 at 06:43 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -95,7 +95,7 @@ CREATE TABLE `tbl_site` (
   `name_site` varchar(150) NOT NULL,
   `since_site` year(4) DEFAULT NULL,
   `owner_site` varchar(150) NOT NULL,
-  `address_site` text DEFAULT NULL,
+  `address_site` text,
   `email_site` varchar(50) DEFAULT NULL,
   `logo_site` varchar(65) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -165,8 +165,8 @@ CREATE TABLE `tbl_user` (
   `password` varchar(10) NOT NULL,
   `is_active` int(11) NOT NULL,
   `type` enum('user','admin') NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
@@ -175,6 +175,66 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id_user`, `username`, `email`, `password`, `is_active`, `type`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'adminsanggar@gmail.com', 'password', 1, 'admin', '2021-04-22 00:00:00', '2021-04-22 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_status`
+--
+
+CREATE TABLE `tb_status` (
+  `id_sts` int(11) NOT NULL,
+  `status` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_status`
+--
+
+INSERT INTO `tb_status` (`id_sts`, `status`) VALUES
+(1, 'Anggota Sanggar'),
+(2, 'Umum');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_token`
+--
+
+CREATE TABLE `tb_token` (
+  `id` int(11) NOT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `token` varchar(128) DEFAULT NULL,
+  `date_created` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_user`
+--
+
+CREATE TABLE `tb_user` (
+  `id_user` int(11) NOT NULL,
+  `nama_lengkap` varchar(255) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `alamat` varchar(120) DEFAULT NULL,
+  `no_telepon` char(13) DEFAULT NULL,
+  `jenis_kelamin` varchar(20) DEFAULT NULL,
+  `kategori` varchar(35) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `aktif` varchar(2) NOT NULL,
+  `date_created` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_user`
+--
+
+INSERT INTO `tb_user` (`id_user`, `nama_lengkap`, `username`, `email`, `alamat`, `no_telepon`, `jenis_kelamin`, `kategori`, `status`, `password`, `aktif`, `date_created`) VALUES
+(3, 'Deny Fajar', 'deny', 'denyfajar12@gmail.com', 'jl sparman no 4 jember', '082132881252', 'pria', 'Dewasa-Remaja', '2', 'ardiyan16', '1', '00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -217,6 +277,24 @@ ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `tb_status`
+--
+ALTER TABLE `tb_status`
+  ADD PRIMARY KEY (`id_sts`);
+
+--
+-- Indexes for table `tb_token`
+--
+ALTER TABLE `tb_token`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -224,7 +302,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_achievement`
 --
 ALTER TABLE `tbl_achievement`
-  MODIFY `id_achiev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_achiev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_event`
@@ -255,6 +333,24 @@ ALTER TABLE `tbl_training`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tb_status`
+--
+ALTER TABLE `tb_status`
+  MODIFY `id_sts` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_token`
+--
+ALTER TABLE `tb_token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
