@@ -22,7 +22,7 @@ class Beranda extends CI_Controller
 		$this->load->view('frontoffice/style/v_footer', $data);
     }
 
-    public function beranda()
+    public function beranda_umum()
     {
         $data['judul'] = 'Beranda';
         $this->load->view('frontoffice/style/v_header', $data);

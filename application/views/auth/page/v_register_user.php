@@ -66,8 +66,8 @@
                                 <div class="form-group">
                                     <select class="form-control" name="status">
                                         <option>-- Status --</option>
-                                        <option value="Anggota Sanggar">Anggota Sanggar</option>
-                                        <option value="Umum">Umum</option>
+                                        <option value="1">Anggota Sanggar</option>
+                                        <option value="2">Umum</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-3">

@@ -27,14 +27,16 @@
                             </div>
                             <p class="login-card-description">Masuk untuk mendapatkan akses</p>
                             <h5><?= $this->session->flashdata('message') ?></h5>
-                            <form action="#!">
+                            <form action="<?= base_url('Auth/login_user') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="email" class="sr-only">Email</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email / Nama Pengguna">
+                                    <label class="sr-only">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email / Nama Pengguna" required>
+                                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="password" class="sr-only">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Kata Sandi">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Kata Sandi" required>
+                                    <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                                 </div>
                                 <button type="submit" class="btn btn-block login-btn mb-4">Masuk</button>
                             </form>
