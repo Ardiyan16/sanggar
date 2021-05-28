@@ -50,7 +50,7 @@
 
                   <div class="col-md-3">
                       <i class="fa fa-info-circle" style="font-size: 30px; margin-left: 10%;"></i>
-                      <h2><a href="">Tentang</a></h2>
+                      <h2><a href="<?= base_url('Frontoffice/Tentang') ?>">Tentang</a></h2>
                   </div>
 
               </div>

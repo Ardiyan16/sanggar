@@ -218,7 +218,7 @@ class Auth extends CI_Controller
 	public function login_user()
 	{
 		$this->form_validation->set_rules('email', 'Email', 'required|trim', ['required' => 'email tidak boleh kosong']);
-		// $this->form_validation->set_rules('username', 'Username', 'required|trim', ['required' => 'nama pengguna tidak boleh kosong']);
+		//$this->form_validation->set_rules('username', 'Username', 'required|trim', ['required' => 'nama pengguna tidak boleh kosong']);
 		$this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'password tidak boleh kosong']);
 
 		if ($this->form_validation->run() == false) {
@@ -231,11 +231,11 @@ class Auth extends CI_Controller
 	private function proses_login_user()
 	{
 		$email = $this->input->post('email');
-		$username = $this->input->post('email');
+		//$username = $this->input->post('email');
 		$password = $this->input->post('password');
 
 		$pengguna = $this->db->get_where('tb_user', ['email' => $email])->row_array();
-		$pengguna = $this->db->get_where('tb_user', ['username' => $username])->row_array();
+		//$pengguna = $this->db->get_where('tb_user', ['username' => $email])->row_array();
 		$cekpass = $this->db->get_where('tb_user', array('password' => $password));
 
 
@@ -253,10 +253,10 @@ class Auth extends CI_Controller
 					];
 					$data['logged_in'] = TRUE;
 					$this->session->set_userdata($data);
-					if ($pengguna['status'] == '1') {
-						redirect('Frontoffice/Beranda/beranda_anggota');
-					} else if ($pengguna['status'] == '2') {
-						redirect('Frontoffice/Beranda/beranda_umum');
+					if ($pengguna['status'] == 'anggota sanggar') {
+						redirect('Beranda/beranda_anggota');
+					} else if ($pengguna['status'] == 'umum') {
+						redirect('Beranda/beranda_umum');
 					} else {
 						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">role anda tidak di temukan!</div>');
 						redirect('Auth/login_user');
@@ -329,6 +329,6 @@ class Auth extends CI_Controller
 		$this->session->unset_userdata('email');
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">anda telah logout</div>');
-		redirect('frontoffice/Beranda');
+		redirect('Beranda');
 	}
 }

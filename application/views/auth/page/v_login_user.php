@@ -18,7 +18,7 @@
             <div class="card login-card">
                 <div class="row no-gutters">
                     <div class="col-md-5">
-                        <img src="<?= base_url() ?>assets/login2/images/tarian.jpg" alt="login" class="login-card-img">
+                        <img src="<?= base_url() ?>assets/images/img_dance.png" alt="login" class="login-card-img">
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
@@ -30,7 +30,7 @@
                             <form action="<?= base_url('Auth/login_user') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="sr-only">Email</label>
-                                    <input type="text" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
                                     <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                 </div>
                                 <div class="form-group mb-4">
