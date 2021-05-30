@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="<?= base_url() ?>backoffice/costume" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kostum</p>
                             </a>

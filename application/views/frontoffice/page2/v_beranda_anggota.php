@@ -40,7 +40,7 @@
 
                   <div class="col-md-3">
                       <i class="fa fa-exchange" style="font-size: 30px; margin-left: 10%;"></i>
-                      <h2><a href="">Penyewaan</a></h2>
+                      <h2><a href="<?= base_url('Frontoffice/Penyewaan') ?>">Penyewaan</a></h2>
                   </div>
 
                   <div class="col-md-3">
