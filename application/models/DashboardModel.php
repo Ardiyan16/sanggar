@@ -15,4 +15,9 @@ class DashboardModel extends CI_Model
         $qry = $this->db->get($table)->row();
         return $qry;
     }
+
+    public function user()
+    {
+        return $this->db->get('tb_user')->result();
+    }
 }

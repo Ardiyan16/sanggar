@@ -2,11 +2,15 @@
 
 class CostumeModel extends CI_Model
 {
-    private $tabel = 'tb_costume';
+    private $tabel = 'tb_kostume';
 
     public function view()
     {
-        return $this->db->get($this->tabel)->result();
+        $this->db->select('*');
+        $this->db->from('tb_kostume');
+        $this->db->join('tb_jenis_tari', 'tb_jenis_tari.id = tb_kostume.id');
+        return $this->db->get()->result();
+        //return $this->db->get($this->tabel)->result();
     }
 
     public function get_tari()
@@ -25,8 +29,8 @@ class CostumeModel extends CI_Model
         $this->nama = $post['nama'];
         $this->foto = $this->_uploadImage();
         $this->deskripsi = $post['deskripsi'];
+        $this->harga_sewa = $post['harga_sewa'];
         $this->id = $post['id'];
-
         $this->db->insert($this->tabel, $this);
 
     }
@@ -62,10 +66,26 @@ class CostumeModel extends CI_Model
             $this->foto = $post["old_image"];
         }
         $this->deskripsi = $post['deskripsi'];
+        $this->harga_sewa = $post['harga_sewa'];
         $this->id = $post['id'];
 
         $this->db->update($this->tabel, $this, array('id_costume' => $post['id_costume']));
 
+    }
+
+    public function delete($id)
+    {
+        $this->_deleteImage($id);
+        return $this->db->delete($this->tabel, array("id_costume" => $id));
+    }
+
+    private function _deleteImage($id)
+    {
+        $pegawai = $this->getById($id);
+        if ($pegawai->foto != "01.jpg") {
+            $filename = explode(".", $pegawai->foto)[0];
+            return array_map('unlink', glob(FCPATH . "upload/profil/$filename.*"));
+        }
     }
 
 }

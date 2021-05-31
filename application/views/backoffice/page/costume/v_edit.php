@@ -23,7 +23,7 @@
                     <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Tambah Costume </h3>
+                            <h3 class="card-title">Edit Costume </h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -40,11 +40,15 @@
                                     <input type="hidden" name="old_image" value="<?= $edit->foto ?>">
                                 </div>
                                 <div class="form-group">
-                                <img src="<?= base_url('assets/images/costume/' . $edit->foto) ?>" width="200px" height="150px" />
+                                    <img src="<?= base_url('assets/images/costume/' . $edit->foto) ?>" width="200px" height="150px" />
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Deskripsi</label>
                                     <textarea type="text" name="deskripsi" class="form-control" id="exampleInputPassword1" placeholder="Enter Description"><?= $edit->deskripsi ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Harga Sewa</label>
+                                    <input type="text" name="harga_sewa" value="<?= $edit->harga_sewa ?>" class="form-control" id="exampleInputEmail1" placeholder="Enter Harga">
                                 </div>
                                 <div class="form-group">
                                     <select name="id" class="form-control">

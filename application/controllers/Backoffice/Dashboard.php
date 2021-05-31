@@ -19,4 +19,13 @@ class Dashboard extends CI_Controller
         $this->load->view('backoffice/page/v_dashboard', $data);
         $this->load->view('backoffice/style/v_footer');
     }
+
+    public function user()
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        $data['data'] = $this->dashboard->user();
+        $this->load->view('backoffice/page/v_user', $data);
+        $this->load->view('backoffice/style/v_footer');
+    }
 }

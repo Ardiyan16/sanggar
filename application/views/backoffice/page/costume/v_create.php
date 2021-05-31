@@ -42,6 +42,10 @@
                                     <textarea type="text" name="deskripsi" class="form-control" id="exampleInputPassword1" placeholder="Enter Description"></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Harga Sewa</label>
+                                    <input type="text" name="harga_sewa" class="form-control" id="exampleInputEmail1" placeholder="Enter Harga">
+                                </div>
+                                <div class="form-group">
                                     <select name="id" class="form-control">
                                         <option>--Jenis Tari--</option>
                                         <?php foreach ($data as $d) : ?>

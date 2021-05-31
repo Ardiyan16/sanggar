@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link ">
+                            <a href="<?= base_url('backoffice/Dashboard/user') ?>" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data User</p>
                             </a>

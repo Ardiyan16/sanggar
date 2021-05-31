@@ -61,4 +61,10 @@ class Costume extends CI_Controller
         window.location.href = '" . base_url('Backoffice/Costume') . "';
     </script>";
     }
+
+    public function delete($id)
+    {
+        $this->CostumeModel->delete($id);
+        redirect(site_url('Backoffice/Costume'));
+    }
 }
