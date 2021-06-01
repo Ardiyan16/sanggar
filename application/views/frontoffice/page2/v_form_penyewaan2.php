@@ -11,15 +11,10 @@
                     <h2><?= $view->nama ?></h2>
                     <h5>Harga Sewa : Rp.<?= $view->harga_sewa ?> / Hari</h5>
                 </div>
-                <form action="<?= base_url('frontoffice/penyewaan/save') ?>" method="post" class="main_form">
+                <form id="request" class="main_form">
                     <div class="row">
                         <div class="col-md-12 ">
                             <label>Tanggal Sewa</label>
-                            <?php
-                            $acak = mt_rand(0, 700);
-                            $tanggal = date("dmY")
-                            ?>
-                            <input class="contactus" type="hidden" name="id_penyewaan" value="PS-<?= $tanggal ?>-<?= $acak ?>">
                             <input class="contactus" placeholder="" value="<?= $user['id_user'] ?>" type="text" hidden name="id_user">
                             <input class="contactus" placeholder="" value="<?= $view->id_costume ?>" type="text" hidden name="id_costume">
                             <input class="contactus" placeholder="" type="date" name="tanggal_sewa">

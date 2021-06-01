@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 06:43 AM
+-- Generation Time: Jun 01, 2021 at 09:51 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -42,6 +42,14 @@ CREATE TABLE `tbl_achievement` (
 
 INSERT INTO `tbl_achievement` (`id_achiev`, `img_achiev`, `desc_achiev`, `created_at`, `updated_at`) VALUES
 (16, '1619190265.jpg', 'Hai Ayo', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_costume`
+--
+-- Error reading structure for table sanggar.tbl_costume: #1932 - Table 'sanggar.tbl_costume' doesn't exist in engine
+-- Error reading data for table sanggar.tbl_costume: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `sanggar`.`tbl_costume`' at line 1
 
 -- --------------------------------------------------------
 
@@ -179,6 +187,49 @@ INSERT INTO `tbl_user` (`id_user`, `username`, `email`, `password`, `is_active`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_costume`
+--
+-- Error reading structure for table sanggar.tb_costume: #1932 - Table 'sanggar.tb_costume' doesn't exist in engine
+-- Error reading data for table sanggar.tb_costume: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `sanggar`.`tb_costume`' at line 1
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_jenis_tari`
+--
+
+CREATE TABLE `tb_jenis_tari` (
+  `id` int(11) NOT NULL,
+  `jenis_tari` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Error reading data for table sanggar.tb_jenis_tari: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `sanggar`.`tb_jenis_tari`' at line 1
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_kostume`
+--
+
+CREATE TABLE `tb_kostume` (
+  `id_costume` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `foto` varchar(500) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `harga_sewa` varchar(55) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_kostume`
+--
+
+INSERT INTO `tb_kostume` (`id_costume`, `nama`, `foto`, `deskripsi`, `harga_sewa`, `id`) VALUES
+(1, 'Tari Remo', '1622465512.jpg', 'Jarik, Sarung, dan Kece', '35000', 1),
+(2, 'Tari Reog', '1622465599.jpg', 'Celana, Topeng', '30000', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_status`
 --
 
@@ -211,6 +262,24 @@ CREATE TABLE `tb_token` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_trans_sewa`
+--
+
+CREATE TABLE `tb_trans_sewa` (
+  `id_penyewaan` varchar(20) NOT NULL,
+  `id_costume` int(11) DEFAULT NULL,
+  `tanggal_sewa` date DEFAULT NULL,
+  `tanggal_kembali` date DEFAULT NULL,
+  `total_kostum` char(5) DEFAULT NULL,
+  `total_pembayaran` varchar(20) DEFAULT NULL,
+  `metode_pembayaran` varchar(5) DEFAULT NULL,
+  `foto_tf` varchar(500) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_user`
 --
 
@@ -234,7 +303,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama_lengkap`, `username`, `email`, `alamat`, `no_telepon`, `jenis_kelamin`, `kategori`, `status`, `password`, `aktif`, `date_created`) VALUES
-(3, 'Deny Fajar', 'deny', 'denyfajar12@gmail.com', 'jl sparman no 4 jember', '082132881252', 'pria', 'Dewasa-Remaja', '2', 'ardiyan16', '1', '00:00:00');
+(3, 'Deny Fajar Indra', 'deny', 'denyfajar12@gmail.com', 'jl sparman no 1 jember', '082132881252', 'pria', 'Dewasa-Remaja', 'umum', 'ardiyan16', '1', '00:00:00'),
+(4, 'skyline', 'skylinee', 'skylineardi@gmail.com', 'Jember Jawa Timur', '082132881000', 'pria', 'Dewasa-Remaja', 'umum', 'abc', '1', '00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -277,6 +347,18 @@ ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `tb_jenis_tari`
+--
+ALTER TABLE `tb_jenis_tari`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_kostume`
+--
+ALTER TABLE `tb_kostume`
+  ADD PRIMARY KEY (`id_costume`);
+
+--
 -- Indexes for table `tb_status`
 --
 ALTER TABLE `tb_status`
@@ -287,6 +369,12 @@ ALTER TABLE `tb_status`
 --
 ALTER TABLE `tb_token`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_trans_sewa`
+--
+ALTER TABLE `tb_trans_sewa`
+  ADD PRIMARY KEY (`id_penyewaan`);
 
 --
 -- Indexes for table `tb_user`
@@ -335,6 +423,18 @@ ALTER TABLE `tbl_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `tb_jenis_tari`
+--
+ALTER TABLE `tb_jenis_tari`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_kostume`
+--
+ALTER TABLE `tb_kostume`
+  MODIFY `id_costume` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tb_status`
 --
 ALTER TABLE `tb_status`
@@ -344,13 +444,13 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT for table `tb_token`
 --
 ALTER TABLE `tb_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
