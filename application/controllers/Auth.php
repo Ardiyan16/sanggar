@@ -249,6 +249,7 @@ class Auth extends CI_Controller
 					$data = [
 						'email' => $pengguna['email'],
 						'username' => $pengguna['username'],
+						'id_user' => $pengguna['id_user'],
 						'foto' => $pengguna['foto']
 					];
 					$data['logged_in'] = TRUE;

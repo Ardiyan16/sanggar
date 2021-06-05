@@ -65,6 +65,14 @@
                     </ul>
                 </li>
                 <li class="nav-item ">
+                    <a href="<?= base_url() ?>backoffice/Penyewaan" class="nav-link">
+                        <i class="nav-icon fas fa-handshake"></i>
+                        <p>
+                            Penyewaan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>

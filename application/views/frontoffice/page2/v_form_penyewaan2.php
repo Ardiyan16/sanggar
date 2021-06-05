@@ -39,7 +39,7 @@
                         Harga Sewa/Hari<input type="text" id="hrg" value="<?= $sewa->harga_sewa ?>" readonly class="form-control md-4">
                     </div>
                     <div class="hr-line-dashed"></div>
-                    <form action="<?= base_url('frontoffice/penyewaan/save') ?>" method="post" class="main_form">
+                    <form action="<?= base_url('frontoffice/penyewaan/update') ?>" method="post" enctype="multipart/form-data" class="main_form">
                         <div class="row">
                             <div class="col-md-12 form-group" style="margin-top: 30px;">
                                 <label>Tanggal Sewa</label>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <label>Upload Bukti Transfer</label>
-                                <input class="form-control" placeholder="Metode Pembayaran" value="BCA 009201901920" type="file" name="foto_tf">
+                                <input class="form-control" placeholder="Metode Pembayaran" type="file" name="foto_tf">
                             </div>
                             <div class="col-md-12 form-group">
                                 <button type="submit" class="btn btn-primary">Simpan</button>

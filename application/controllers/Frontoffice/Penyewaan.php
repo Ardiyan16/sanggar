@@ -19,6 +19,8 @@ class Penyewaan extends CI_Controller
     {
         $data['judul'] = 'Penyewaan Kostum';
         $data['kostum'] = $this->CostumeModel->view();
+        // $data['notif'] = $this->db->from('tbl_notifikasi')->where(['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->get()->result();
+        $data['proses'] = $this->db->get_where('tbl_penyewaan', ['id_user' => $this->session->userdata('id_user')])->row_array();
         $this->load->view('frontoffice/style/v_header', $data);
         $this->load->view('frontoffice/style/v_navbar_user2', $data);
         $this->load->view('frontoffice/page2/v_penyewaan', $data);
@@ -58,13 +60,23 @@ class Penyewaan extends CI_Controller
             'total_kostum' => $this->input->post('total_kostum'),
             'total_pembayaran' => $this->input->post('total_pembayaran'),
             'metode_pembayaran' => $this->input->post('metode_pembayaran'),
-            'foto_tf' => '01.jpg',  
+            'foto_tf' => '01.jpg',
             'id_user' => $this->input->post('id_user'),
-            'status' => 'pembayaran',
+            'status' => '1',
         );
         $this->PenyewaanModel->save($data);
         // $id = $this->input->post('id_service');
         // $this->M_invoice->update_status($id);
         redirect('frontoffice/Penyewaan/form_sewa2/' . $this->input->post('id_penyewaan'));
+    }
+
+    public function update()
+    {
+        $update = $this->PenyewaanModel;
+        $update->update();
+        echo "<script>
+        alert('Data penyewaan anda berhasil dikirim tunggu konfirmasi dari kami ke email anda');
+        window.location.href = '" . base_url('Frontoffice/penyewaan') . "';
+    </script>";
     }
 }

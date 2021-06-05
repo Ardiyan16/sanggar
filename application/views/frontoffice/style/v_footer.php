@@ -18,6 +18,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script src="<?= base_url() ?>assets/user/js/owl.carousel.min.js"></script>
 <script src="<?= base_url() ?>assets/user/js/custom.js"></script>
+<script>
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+</script>
 </body>
 
 </html>

@@ -9,6 +9,9 @@
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
                         </div>
                     </form>
+                    <div class="text-right" style="text-align: left;">
+                        <a href="#data" data-toggle="modal" class="btn btn-success">Proses belum selesai</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,6 +33,47 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="data" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Proses Belum Selesai</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table" width="70%">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tanggal Sewa</th>
+                                <th scope="col">Tanggal Kembali</th>
+                                <th scope="col">Total Kostum</th>
+                                <th scope="col">Total Pembayaran</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><?= $proses['tanggal_sewa'] ?></td>
+                                <td><?= $proses['tanggal_kembali'] ?></td>
+                                <td><?= $proses['total_kostum'] ?></td>
+                                <td><?= $proses['total_pembayaran'] ?></td>
+                                <td>
+                                    <a href="<?= base_url('Frontoffice/penyewaan/form_sewa2/'. $proses['id_penyewaan']) ?>" class="btn btn-primary">Lanjutkan Proses</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
