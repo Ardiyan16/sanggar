@@ -10,6 +10,7 @@ class Tentang extends CI_Controller
     {
         parent::__construct();
         $this->load->model('AboutModel');
+        $this->load->model('DashboardModel');
         $this->load->library('form_validation');
     }
 
@@ -17,8 +18,15 @@ class Tentang extends CI_Controller
     {
         $data['judul'] = 'Tentang';
         $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result();
+        $data['site'] = $this->db->get_where('tbl_site')->result();
+        $data['jml_pelatih'] = $this->db->count_all('tbl_trainer');
+        $data['jml_anggota'] = $this->DashboardModel->countUser();
+        $data['pelatih'] = $this->DashboardModel->pelatih();
+        $data['anggota'] = $this->DashboardModel->anggota();
+        $data['anggota2'] = $this->DashboardModel->anggota2();
+        $data['penghargaan'] = $this->DashboardModel->prestasi();
         $this->load->view('frontoffice/style/v_header', $data);
-        $this->load->view('frontoffice/style/v_navbar_user2', $data);
+        $this->load->view('frontoffice/style/v_navbarr', $data);
         $this->load->view('frontoffice/page2/v_tentang_sanggar', $data);
         $this->load->view('frontoffice/style/v_footer', $data);
     }

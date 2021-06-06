@@ -16,10 +16,12 @@
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
                     <span class="dropdown-item dropdown-header">15 Notifikasi</span>
                     <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> <?= substr($notif['keterangan'], 0, 30); ?>
-                        <span class="float-right text-muted text-sm"><?= $notif['waktu'] ?></span>
-                    </a>
+                    <?php foreach ($notif as $n) { ?>
+                        <a href="#tampilNotif<?= $n['id_notif'] ?>" data-toggle="modal" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> <?= substr($n['keterangan'], 0, 30); ?>...
+                            <span class="float-right text-muted text-sm"><?= $n['waktu'] ?></span>
+                        </a>
+                    <?php } ?>
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
@@ -46,3 +48,27 @@
             </li>
         </div>
     </header>
+
+    <?php foreach ($notif as $n) { ?>
+        <div class="modal fade" id="tampilNotif<?= $n['id_notif'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <form>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Foto Transfer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5><?= $n['keterangan'] ?></h5>
+                            <br>
+                            <p style="text-align: right;"><?= $n['waktu'] ?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="" class="btn btn-danger" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <?php } ?>
