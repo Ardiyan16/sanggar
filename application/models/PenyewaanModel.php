@@ -19,6 +19,16 @@ class PenyewaanModel extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function riwayat()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_penyewaan');
+        $this->db->join('tb_kostume', 'tb_kostume.id_costume = tbl_penyewaan.id_costume');
+        $this->db->join('tb_user', 'tb_user.id_user = tbl_penyewaan.id_user');
+        $this->db->where('tbl_penyewaan.status', 3);
+        return $this->db->get()->result();
+    }
+
     public function v_penyewaan2()
     {
         $this->db->select('*');

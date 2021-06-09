@@ -10,6 +10,8 @@ class Event extends CI_Controller
     {
         parent::__construct();
         $this->load->model('EventModel');
+        $this->load->model('DashboardModel');
+        $this->load->model('PenyewaanModel');
         $this->load->library('form_validation');
     }
 
@@ -19,6 +21,7 @@ class Event extends CI_Controller
         $this->load->view('backoffice/v_sidebar');
 
         $data['data'] = $this->EventModel->showEvent('tbl_event');
+        $data['user'] = $this->DashboardModel->v_user();
 
         $this->load->view('backoffice/page/event/v_index', $data);
         $this->load->view('backoffice/style/v_footer');
@@ -125,5 +128,30 @@ class Event extends CI_Controller
         } else {
             return $this->upload->data('file_name');
         }
+    }
+
+    public function kirim_notif()
+    {
+        $waktu = date("Y-m-d h:i:sa");
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'keterangan' => 'anda akan mengikuti event terdekat silahkan untuk mengikuti latihan untuk kegiatan event',
+            'waktu' => $waktu,
+            'status' => '1',
+        );
+        $this->PenyewaanModel->kirim_notif($data);
+        echo "<script>
+        alert('Notifikasi berhasil dikirimkan');
+        window.location.href = '" . base_url('backoffice/event/v_kirim_notif') . "';
+    </script>";
+    }
+
+    public function v_kirim_notif()
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        $data['user'] = $this->DashboardModel->v_user();
+        $this->load->view('backoffice/page/v_notif', $data);
+        $this->load->view('backoffice/style/v_footer');
     }
 }

@@ -12,6 +12,7 @@ class Costume extends CI_Controller
         $this->load->model('AboutModel');
         $this->load->library('form_validation');
         $this->load->model('CostumeModel');
+        $this->load->model('JadwalModel');
     }
 
     public function index()
@@ -67,4 +68,5 @@ class Costume extends CI_Controller
         $this->CostumeModel->delete($id);
         redirect(site_url('Backoffice/Costume'));
     }
+
 }

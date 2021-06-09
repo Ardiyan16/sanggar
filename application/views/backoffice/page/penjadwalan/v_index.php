@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kostume</h1>
+                    <h1 class="m-0">Jadwal Rutin</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Website Utama</a></li>
-                        <li class="breadcrumb-item active">Kostum</li>
+                        <li class="breadcrumb-item active">Jadwal Rutin</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,8 +22,8 @@
                     <?= $this->session->flashdata('success') ?>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Kostum</h3>
-                            <a class="btn btn-success float-right" href="<?= base_url() ?>backoffice/costume/create"><i class="fas fa-edit"></i> Tambah</a>
+                            <h3 class="card-title">Jadwal Rutin</h3>
+                            <a class="btn btn-success float-right" href="<?= base_url() ?>backoffice/jadwal/create"><i class="fas fa-edit"></i> Tambah</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -31,11 +31,11 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Foto</th>
+                                        <th>Hari</th>
+                                        <th>Tanggal</th>
+                                        <th>Waktu</th>
                                         <th>Deskripsi</th>
-                                        <th>Harga Sewa</th>
-                                        <th>Jenis Tari</th>
+                                        <th>Kategori</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -45,15 +45,15 @@
                                     foreach ($data as $d) { ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $d->nama ?></td>
-                                            <td><img class="rounded" width="150px" height="100px" src="<?= base_url('assets/images/costume/' . $d->foto) ?>"></td>
+                                            <td><?= $d->hari ?></td>
+                                            <td><?= $d->tanggal ?></td>
+                                            <td><?= $d->waktu ?></td>
                                             <td><?= $d->deskripsi ?></td>
-                                            <th><?= $d->harga_sewa ?></th>
-                                            <td><?= $d->jenis_tari ?></td>
+                                            <td><?= $d->kategori ?></td>
                                             <td class="">
-                                                <!-- <a class="btn btn-warning  btn-sm text-white" href="<?= base_url('backoffice/achiev/show/' . $d->id_costume) ?>"><i class="fas fa-eye"></i></a> -->
-                                                <a class="btn btn-info btn-sm " href="<?= base_url('backoffice/costume/edit/' . $d->id_costume) ?>"><i class="fas fa-edit"></i></a>
-                                                <button class="btn btn-danger btn-sm " data-toggle="modal" data-target="#modalDelete<?= $d->id_costume ?>"><i class="fas fa-trash"></i></button>
+                                                <a class="btn btn-info btn-sm " href="<?= base_url('backoffice/jadwal/edit/' . $d->id_jadwal) ?>"><i class="fas fa-edit"></i></a>
+                                                <button class="btn btn-danger btn-sm " data-toggle="modal" data-target="#modalDelete<?= $d->id_jadwal ?>"><i class="fas fa-trash"></i></button>
+                                                <a href="<?= base_url('backoffice/jadwal/absensi/' . $d->id_jadwal) ?>" class="btn btn-success btn-sm">Absensi</a>
                                             </td>
 
                                         </tr>
@@ -71,7 +71,7 @@
     <?php
     $i = 1;
     foreach ($data as $d) { ?>
-        <div class="modal fade" id="modalDelete<?= $d->id_costume ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalDelete<?= $d->id_jadwal ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <form>
                     <div class="modal-content">
@@ -86,7 +86,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <a type="button" href="<?= base_url('backoffice/costume/delete/' . $d->id_costume) ?>" class="btn btn-danger" type="submit">Hapus</a>
+                            <a type="button" href="<?= base_url('backoffice/jadwal/delete/' . $d->id_jadwal) ?>" class="btn btn-danger" type="submit">Hapus</a>
                         </div>
                     </div>
             </div>

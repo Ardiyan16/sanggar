@@ -54,6 +54,7 @@
                                             <td class="">
                                                 <a class="btn btn-info btn-sm " href="<?= base_url('backoffice/event/edit/' . $d->id_event) ?>"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm " data-toggle="modal" data-target="#modalDelete<?= $d->id_event ?>"><i class="fas fa-trash"></i></button>
+                                                <a class="btn btn-success btn-sm" href="<?= base_url('backoffice/event/v_kirim_notif') ?>"><i class="fas fa-bell"></i></a>
                                             </td>
 
                                         </tr>
@@ -152,4 +153,3 @@
             </div>
         </div>
     <?php } ?>
-</div>

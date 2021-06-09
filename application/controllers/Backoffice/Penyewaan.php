@@ -62,4 +62,13 @@ class Penyewaan extends CI_Controller
         window.location.href = '" . base_url('backoffice/penyewaan') . "';
     </script>";
     }
+
+    public function riwayat_penyewaan()
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        $data['sewa_new'] = $this->PenyewaanModel->riwayat();
+        $this->load->view('backoffice/page/riwayat/v_riwayat_penyewaan', $data);
+        $this->load->view('backoffice/style/v_footer');
+    }
 }

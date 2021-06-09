@@ -29,6 +29,14 @@ class DashboardModel extends CI_Model
         return $this->db->get('tb_user')->result();
     }
 
+    public function v_user()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_user');
+        $this->db->where('status', 'anggota sanggar');
+        return $this->db->get()->result();
+    }
+
     public function pelatih()
     {
         return $this->db->get('tbl_trainer')->result();
