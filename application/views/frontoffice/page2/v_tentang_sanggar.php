@@ -118,6 +118,9 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <br>
+            <br>
+            <br>
             <div class="col-md-12">
                 <div class="titlepage text_align_center">
                     <!-- <h2>Anggota Sanggar</h2> -->

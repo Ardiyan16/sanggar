@@ -12,6 +12,12 @@ class Profile extends CI_Controller
         $this->load->model('AboutModel');
         $this->load->library('form_validation');
         $this->load->model('ProfileModel');
+        if (empty($this->session->userdata('email'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth/login_user') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index()

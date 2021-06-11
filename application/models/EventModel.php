@@ -2,6 +2,14 @@
 
 class EventModel extends CI_Model
 {
+    public function view_training()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_training');
+        $this->db->join('tbl_event', 'tbl_event.id_event = tbl_training.id_event');
+        return $this->db->get()->result();
+    }
+
     function showEvent($table)
     {
         $this->db->join('tbl_training', 'tbl_training.event_id=' . $table . '.id_event', 'left');

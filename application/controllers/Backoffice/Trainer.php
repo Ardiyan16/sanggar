@@ -7,6 +7,12 @@ class Trainer extends CI_Controller
         parent::__construct();
         $this->load->model('TrainerModel');
         $this->load->library('form_validation');
+        if (empty($this->session->userdata('username'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index()

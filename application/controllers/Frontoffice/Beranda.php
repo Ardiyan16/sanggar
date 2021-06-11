@@ -13,15 +13,12 @@ class Beranda extends CI_Controller
         $this->load->model('NotifModel');
         $this->load->model('DashboardModel');
         $this->load->library('form_validation');
-    }
-
-    public function index()
-    {
-        $data['judul'] = 'Beranda';
-        $this->load->view('frontoffice/style/v_header', $data);
-        $this->load->view('frontoffice/style/v_navbar', $data);
-        $this->load->view('frontoffice/page/v_beranda', $data);
-        $this->load->view('frontoffice/style/v_footer', $data);
+        if (empty($this->session->userdata('email'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth/login_user') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function beranda_anggota()
@@ -49,19 +46,5 @@ class Beranda extends CI_Controller
         $this->load->view('frontoffice/style/v_navbar_user', $data);
         $this->load->view('frontoffice/page2/v_beranda_umum', $data);
         $this->load->view('frontoffice/style/v_footer', $data);
-    }
-
-    public function update_notif($id)
-    {
-        $update = $this->NotifModel;
-        $update->update_status($id);
-        redirect('Frontoffice/Beranda/beranda_umum');
-    }
-
-    public function update_notif2($id)
-    {
-        $update = $this->NotifModel;
-        $update->update_status($id);
-        redirect('Frontoffice/Beranda/beranda_anggota');
     }
 }

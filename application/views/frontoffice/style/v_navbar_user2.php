@@ -11,10 +11,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
+                    <span class="badge badge-warning navbar-badge"><?= $jml_notif ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-                    <span class="dropdown-item dropdown-header">15 Notifikasi</span>
+                    <span class="dropdown-item dropdown-header"><?= $jml_notif ?> Notifikasi</span>
                     <div class="dropdown-divider"></div>
                     <?php foreach ($notif as $n) { ?>
                         <a href="#tampilNotif<?= $n['id_notif'] ?>" data-toggle="modal" class="dropdown-item">

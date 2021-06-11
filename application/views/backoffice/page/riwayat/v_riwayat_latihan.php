@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Data Absen</h1>
+                    <h1 class="m-0">Jadwal Rutin</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Website Utama</a></li>
-                        <li class="breadcrumb-item active">Data Absen</li>
+                        <li class="breadcrumb-item active">Jadwal Rutin</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,13 +22,7 @@
                     <?= $this->session->flashdata('success') ?>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Absen</h3>
-                            <br>
-                            <?php $date = date('dmY'); ?>
-                            <form>
-                                <input type="date" name="tanggal" value="<?= $date ?>">
-                                <button type="submit" class="btn btn-info btn-sm">Pilih</button>
-                            </form>
+                            <h3 class="card-title">Riwayat Latihan Rutin</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -36,10 +30,12 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Anggota</th>
-                                        <th>Tanggal / Waktu</th>
+                                        <th>Hari</th>
+                                        <th>Tanggal</th>
+                                        <th>Waktu</th>
                                         <th>Deskripsi</th>
-                                        <th>Keterangan</th>
+                                        <th>Kategori</th>
+                                        <th>Opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,10 +44,14 @@
                                     foreach ($data as $d) { ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $d->nama_lengkap ?></td>
-                                            <td><?= $d->tanggal ?> / <?= $d->waktu ?></td>
+                                            <td><?= $d->hari ?></td>
+                                            <td><?= $d->tanggal ?></td>
+                                            <td><?= $d->waktu ?></td>
                                             <td><?= $d->deskripsi ?></td>
-                                            <td><?= $d->keterangan ?></td>
+                                            <td><?= $d->kategori ?></td>
+                                            <td>
+                                                <a href="<?= base_url('backoffice/jadwal/data_absen/' . $d->id_jadwal) ?>" class="btn btn-info btn-sm"><i class="fas fa-document"></i> Cek Absensi</a>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>

@@ -23,12 +23,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Data Absen</h3>
-                            <br>
-                            <?php $date = date('dmY'); ?>
-                            <form>
-                                <input type="date" name="tanggal" value="<?= $date ?>">
-                                <button type="submit" class="btn btn-info btn-sm">Pilih</button>
-                            </form>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -39,7 +33,7 @@
                                         <th>Nama Anggota</th>
                                         <th>Tanggal / Waktu</th>
                                         <th>Deskripsi</th>
-                                        <th>Keterangan</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -217,61 +217,59 @@ class Auth extends CI_Controller
 
 	public function login_user()
 	{
-		$this->form_validation->set_rules('email', 'Email', 'required|trim', ['required' => 'email tidak boleh kosong']);
-		//$this->form_validation->set_rules('username', 'Username', 'required|trim', ['required' => 'nama pengguna tidak boleh kosong']);
-		$this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'password tidak boleh kosong']);
+		// $this->form_validation->set_rules('email', 'Email', 'required|trim', ['required' => 'email tidak boleh kosong']);
+		// $this->form_validation->set_rules('username', 'Username', 'required|trim', ['required' => 'nama pengguna tidak boleh kosong']);
+		// $this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'password tidak boleh kosong']);
 
-		if ($this->form_validation->run() == false) {
-			$this->load->view('Auth/page/v_login_user');
-		} else {
-			$this->proses_login_user();
-		}
+		// if ($this->form_validation->run() == false) {
+		// 	$this->load->view('Auth/page/v_login_user');
+		// } else {
+		// 	$this->proses_login_user();
+		// }
+		$this->load->view('Auth/page/v_login_user');
 	}
 
-	private function proses_login_user()
+	public function proses_login_user()
 	{
-		$email = $this->input->post('email');
-		//$username = $this->input->post('email');
-		$password = $this->input->post('password');
+		$email = htmlspecialchars($this->input->post('email', TRUE), ENT_QUOTES);
+		$password = htmlspecialchars($this->input->post('password', TRUE), ENT_QUOTES);
 
-		$pengguna = $this->db->get_where('tb_user', ['email' => $email])->row_array();
-		//$pengguna = $this->db->get_where('tb_user', ['username' => $email])->row_array();
+		$user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
 		$cekpass = $this->db->get_where('tb_user', array('password' => $password));
 
 
 		//jika usernya terdaftar
-		if ($pengguna) {
-			//jika akun user aktif
-			if ($pengguna['aktif'] == 1) {
-				//cek password
-				if ($cekpass->num_rows() > 0) {
-
+		if ($user) {
+			if ($user['aktif'] = 1) {
+				if ($password == $user['password']) {
 					$data = [
-						'email' => $pengguna['email'],
-						'username' => $pengguna['username'],
-						'id_user' => $pengguna['id_user'],
-						'foto' => $pengguna['foto']
+						'email' => $user['email'],
+						'username' => $user['username'],
+						'id_user' => $user['id_user'],
+						'foto' => $user['foto']
 					];
-					$data['logged_in'] = TRUE;
 					$this->session->set_userdata($data);
-					if ($pengguna['status'] == 'anggota sanggar') {
-						redirect('Beranda/beranda_anggota');
-					} else if ($pengguna['status'] == 'umum') {
-						redirect('Beranda/beranda_umum');
+					if ($user['status'] == 'anggota sanggar') {
+						redirect('frontoffice/beranda/beranda_anggota');
+					}
+					if ($user['status'] == 'umum') {
+						redirect('frontoffice/beranda/beranda_umum');
 					} else {
-						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">role anda tidak di temukan!</div>');
+						$this->session->unset_userdata('email');
+						$this->session->unset_userdata('status');
+						$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda gagal login!</div>');
 						redirect('Auth/login_user');
 					}
 				} else {
-					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang anda masukkan salah!</div>');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
 					redirect('Auth/login_user');
 				}
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf Akun anda belum di verifikasi!</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf email yang anda masukkan salah!</div>');
 				redirect('Auth/login_user');
 			}
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf username atau email yang anda masukkan salah!</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Emailmu Tidak Terdaftar!</div>');
 			redirect('Auth/login_user');
 		}
 	}
@@ -322,6 +320,15 @@ class Auth extends CI_Controller
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Anda berhasil di simpan</div>');
 		redirect('Auth/loading');
+	}
+
+	public function logout()
+	{
+		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('email');
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">anda telah logout</div>');
+		redirect('Auth');
 	}
 
 	public function logout_user()

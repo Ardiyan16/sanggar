@@ -40,7 +40,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
-                                            <th>Status</th>
+                                            <th>Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,9 +55,9 @@
                                                 </td>
                                                 <td align="center">
                                                     <label class="form-check-label">H</label>&nbsp;&nbsp;<label class="form-check-label">T</label>&nbsp;&nbsp;<label class="form-check-label">TH</label><br>
-                                                    <input type="checkbox" name="status<?php echo $no; ?>" value="hadir" />&nbsp;&nbsp;
-                                                    <input type="checkbox" name="status<?php echo $no; ?>" value="telat" />&nbsp;&nbsp;
-                                                    <input type="checkbox" name="status<?php echo $no; ?>" value="tidak hadir" />
+                                                    <input type="checkbox" name="keterangan<?php echo $no; ?>" value="hadir" />&nbsp;&nbsp;
+                                                    <input type="checkbox" name="keterangan<?php echo $no; ?>" value="telat" />&nbsp;&nbsp;
+                                                    <input type="checkbox" name="keterangan<?php echo $no; ?>" value="tidak hadir" />
                                                 </td>
                                             </tr>
                                         <?php $no++; endforeach; ?>

@@ -8,6 +8,14 @@ class DashboardModel extends CI_Model
         return $qry;
     }
 
+    function jml_user()
+    {
+        $this->db->select('COUNT(id_user) as count');
+        $this->db->from('tb_user');
+        $qry = $this->db->get()->row()->count;
+        return $qry;
+    }
+
     function countUser()
     {
         $this->db->select('COUNT(id_user) as count');
@@ -15,6 +23,15 @@ class DashboardModel extends CI_Model
         $this->db->where('status', 'anggota sanggar');
         $qry = $this->db->get()->row()->count;
         return $qry;
+    }
+
+    public function jml_notif($id)
+    {
+        $this->db->select('COUNT(id_notif) as notif');
+        $this->db->from('tbl_notifikasi');
+        $this->db->where('status', 1);
+        $this->db->where('id_user', $id);
+        return $this->db->get()->row()->notif;
     }
 
     public function jml_anggota()

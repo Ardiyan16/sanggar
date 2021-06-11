@@ -9,6 +9,12 @@ class Jadwal extends CI_Controller
         parent::__construct();
         $this->load->model('JadwalModel');
         $this->load->library('form_validation');
+        if (empty($this->session->userdata('username'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index()
@@ -17,6 +23,26 @@ class Jadwal extends CI_Controller
         $this->load->view('backoffice/v_sidebar');
         $data['data'] = $this->JadwalModel->view();
         $this->load->view('backoffice/page/penjadwalan/v_index', $data);
+        $this->load->view('backoffice/style/v_footer');
+    }
+
+    public function riwayat()
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        $data['data'] = $this->JadwalModel->view2();
+        //$data['absen'] = $this->JadwalModel->view_absen_new($id);
+        $this->load->view('backoffice/page/riwayat/v_riwayat_latihan', $data);
+        $this->load->view('backoffice/style/v_footer');
+    }
+
+    public function data_absen($id)
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        //$data['data'] = $this->JadwalModel->view2();
+        $data['data'] = $this->JadwalModel->view_absen_new($id);
+        $this->load->view('backoffice/page/riwayat/v_data_absen', $data);
         $this->load->view('backoffice/style/v_footer');
     }
 
@@ -83,10 +109,10 @@ class Jadwal extends CI_Controller
     {
         $id_user = $this->input->post('id_user');
         for ($key = 0; $key < sizeof($id_user); $key++) {
-            $status = $_POST['status' . $key];
+            $status = $_POST['keterangan' . $key];
             $data = array(
                 'id_user' => $id_user[$key],
-                'status' => $status,
+                'keterangan' => $status,
                 'id_jadwal' => $this->input->post('id_jadwal')
             );
             $jadwal = $this->JadwalModel->save_absen($data);
@@ -109,5 +135,14 @@ class Jadwal extends CI_Controller
         }
         $this->load->view('backoffice/page/penjadwalan/v_index_absen', $data);
         $this->load->view('backoffice/style/v_footer');
+    }
+
+    public function arsip($id)
+    {
+        $this->JadwalModel->update_arsip($id);
+        echo "<script>
+        alert('penjadwalan berhasil diarsipkan');
+        window.location.href = '" . base_url('backoffice/jadwal') . "';
+    </script>";
     }
 }

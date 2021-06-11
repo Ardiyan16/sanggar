@@ -48,7 +48,6 @@
             </div>
             <div class="modal-body">
                 <table class="table" width="70%">
-                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">Tanggal Sewa</th>

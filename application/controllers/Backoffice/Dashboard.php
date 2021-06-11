@@ -7,6 +7,12 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->model('DashboardModel', 'dashboard');
+        if (empty($this->session->userdata('username'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth') . "';
+            </script>"; //Url tujuan
+        }
     }
     public function index()
     {
@@ -14,7 +20,7 @@ class Dashboard extends CI_Controller
         $this->load->view('backoffice/v_sidebar');
 
         $data['trainer'] = $this->dashboard->countTrainer('tbl_trainer');
-        $data['user'] = $this->dashboard->countUser('tbl_user');
+        $data['user'] = $this->dashboard->jml_user('tbl_user');
 
         $this->load->view('backoffice/page/v_dashboard', $data);
         $this->load->view('backoffice/style/v_footer');

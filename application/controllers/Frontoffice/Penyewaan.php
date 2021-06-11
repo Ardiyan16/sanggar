@@ -13,6 +13,12 @@ class Penyewaan extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('CostumeModel');
         $this->load->model('PenyewaanModel');
+        if (empty($this->session->userdata('email'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth/login_user') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index()
@@ -78,5 +84,18 @@ class Penyewaan extends CI_Controller
         alert('Data penyewaan anda berhasil dikirim tunggu konfirmasi dari kami ke email anda');
         window.location.href = '" . base_url('Frontoffice/penyewaan') . "';
     </script>";
+    }
+
+    public function riwayat()
+    {
+        $id = $this->session->userdata('id_user');
+        $data['judul'] = 'Riwayat';
+        $data['kostum'] = $this->CostumeModel->view();
+        $data['data'] = $this->PenyewaanModel->v_riwayat($id);
+        $data['sewa'] = $this->PenyewaanModel->all();
+        $this->load->view('frontoffice/style/v_header', $data);
+        $this->load->view('frontoffice/style/v_navbar2', $data);
+        $this->load->view('frontoffice/page2/v_riwayat', $data);
+        $this->load->view('frontoffice/style/v_footer', $data);
     }
 }

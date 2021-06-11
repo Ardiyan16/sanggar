@@ -53,6 +53,7 @@
                                             <td class="">
                                                 <a class="btn btn-info btn-sm " href="<?= base_url('backoffice/jadwal/edit/' . $d->id_jadwal) ?>"><i class="fas fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm " data-toggle="modal" data-target="#modalDelete<?= $d->id_jadwal ?>"><i class="fas fa-trash"></i></button>
+                                                <a class="btn btn-warning btn-sm " href="<?= base_url('backoffice/jadwal/arsip/' . $d->id_jadwal) ?>"><i class="fas fa-archive"></i></a>
                                                 <a href="<?= base_url('backoffice/jadwal/absensi/' . $d->id_jadwal) ?>" class="btn btn-success btn-sm">Absensi</a>
                                             </td>
 
@@ -73,22 +74,21 @@
     foreach ($data as $d) { ?>
         <div class="modal fade" id="modalDelete<?= $d->id_jadwal ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form>
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Yakin ingin menghapus data?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <a type="button" href="<?= base_url('backoffice/jadwal/delete/' . $d->id_jadwal) ?>" class="btn btn-danger" type="submit">Hapus</a>
-                        </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+                        Yakin ingin menghapus data?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <a type="button" href="<?= base_url('backoffice/jadwal/delete/' . $d->id_jadwal) ?>" class="btn btn-danger" type="submit">Hapus</a>
+                    </div>
+                </div>
             </div>
         </div>
     <?php } ?>

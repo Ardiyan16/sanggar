@@ -13,6 +13,12 @@ class Event extends CI_Controller
         $this->load->model('DashboardModel');
         $this->load->model('PenyewaanModel');
         $this->load->library('form_validation');
+        if (empty($this->session->userdata('username'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('Auth') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index()
@@ -152,6 +158,15 @@ class Event extends CI_Controller
         $this->load->view('backoffice/v_sidebar');
         $data['user'] = $this->DashboardModel->v_user();
         $this->load->view('backoffice/page/v_notif', $data);
+        $this->load->view('backoffice/style/v_footer');
+    }
+
+    public function training()
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        $data['data'] = $this->EventModel->view_training();
+        $this->load->view('backoffice/page/event/v_index_training', $data);
         $this->load->view('backoffice/style/v_footer');
     }
 }

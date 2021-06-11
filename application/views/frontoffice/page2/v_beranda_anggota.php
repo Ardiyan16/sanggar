@@ -35,7 +35,7 @@
 
                   <div class="col-md-3">
                       <i class="fa fa-calendar" style="font-size: 30px; margin-left: 10%;"></i>
-                      <h2><a href="">Jadwal</a></h2>
+                      <h2><a href="<?= base_url('frontoffice/Jadwal') ?>">Jadwal</a></h2>
                   </div>
 
                   <div class="col-md-3">
@@ -45,7 +45,7 @@
 
                   <div class="col-md-3">
                       <i class="fa fa-history" style="font-size: 30px; margin-left: 10%;"></i>
-                      <h2><a href="">Riwayat</a></h2>
+                      <h2><a href="<?= base_url('frontoffice/penyewaan/riwayat') ?>">Riwayat</a></h2>
                   </div>
 
                   <div class="col-md-3">

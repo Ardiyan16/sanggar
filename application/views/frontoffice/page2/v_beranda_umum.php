@@ -35,7 +35,7 @@
 
                   <div class="col-md-3">
                       <i class="fa fa-calendar" style="font-size: 30px; margin-left: 10%;"></i>
-                      <h2><a href="">Jadwal</a></h2>
+                      <h2><a href="#modalinfo" data-toggle="modal">Jadwal</a></h2>
                   </div>
 
                   <div class="col-md-3">
@@ -45,7 +45,7 @@
 
                   <div class="col-md-3">
                       <i class="fa fa-history" style="font-size: 30px; margin-left: 10%;"></i>
-                      <h2><a href="">Riwayat</a></h2>
+                      <h2><a href="<?= base_url('frontoffice/penyewaan/riwayat') ?>">Riwayat</a></h2>
                   </div>
 
                   <div class="col-md-3">
@@ -77,3 +77,22 @@
       </div>
 
       <!-- update -->
+      <div class="modal fade" id="modalinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <h5>Silahkan login sebagai anggota untuk mendapatkan akses menu</h5>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      <a href="<?= base_url('Auth/login_user') ?>" class="btn btn-primary">Login</a>
+                  </div>
+              </div>
+          </div>
+      </div>

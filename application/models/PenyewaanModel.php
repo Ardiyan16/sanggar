@@ -19,6 +19,16 @@ class PenyewaanModel extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function v_riwayat($id)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_penyewaan');
+        $this->db->join('tb_kostume', 'tb_kostume.id_costume = tbl_penyewaan.id_costume');
+        $this->db->join('tb_user', 'tb_user.id_user = tbl_penyewaan.id_user');
+        $this->db->where('tbl_penyewaan.id_user', $id);
+        return $this->db->get()->result();
+    }
+
     public function riwayat()
     {
         $this->db->select('*');
@@ -46,7 +56,14 @@ class PenyewaanModel extends CI_Model
         $this->db->join('tb_kostume', 'tb_kostume.id_costume = tbl_penyewaan.id_costume');
         $this->db->where('id_penyewaan', $id);
         return $this->db->get()->row();
-        //return $this->db->get_where($this->tabel, ["id_penyewaan" => $id])->row();
+    }
+
+    public function all()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_penyewaan');
+        $this->db->join('tb_kostume', 'tb_kostume.id_costume = tbl_penyewaan.id_costume');
+        return $this->db->get()->result();
     }
 
     function save($where)

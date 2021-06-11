@@ -50,12 +50,7 @@
                                     <input type="text" name="tempat" class="form-control" id="exampleInputEmail1" placeholder="Enter Tempat">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Kategori</label>
-                                    <select class="form-control" name="kategori">
-                                        <option>-- Kategori --</option>
-                                        <option value="Dewasa-Remaja">Dewasa-Remaja</option>
-                                        <option value="Anak-Anak">Anak-Anak</option>
-                                    </select>
+                                    <input type="hidden" value="semua" name="kategori">
                                 </div>
                             </div>
                             <!-- /.card-body -->
