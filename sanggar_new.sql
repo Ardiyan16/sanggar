@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 09:51 AM
+-- Generation Time: Jun 11, 2021 at 03:48 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `sanggar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_absensi`
+--
+
+CREATE TABLE `tbl_absensi` (
+  `id_absensi` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `keterangan` varchar(30) DEFAULT NULL,
+  `id_jadwal` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_absensi`
+--
+
+INSERT INTO `tbl_absensi` (`id_absensi`, `id_user`, `keterangan`, `id_jadwal`) VALUES
+(1, 4, 'hadir', 4),
+(2, 5, 'hadir', 4);
 
 -- --------------------------------------------------------
 
@@ -75,6 +96,80 @@ INSERT INTO `tbl_event` (`id_event`, `name_event`, `date_event`, `created_at`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_jadwal`
+--
+
+CREATE TABLE `tbl_jadwal` (
+  `id_jadwal` int(11) NOT NULL,
+  `hari` varchar(20) DEFAULT NULL,
+  `tanggal` date DEFAULT NULL,
+  `waktu` varchar(10) DEFAULT NULL,
+  `tempat` varchar(255) DEFAULT NULL,
+  `deskripsi` text,
+  `kategori` varchar(50) DEFAULT NULL,
+  `arsip` varchar(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_jadwal`
+--
+
+INSERT INTO `tbl_jadwal` (`id_jadwal`, `hari`, `tanggal`, `waktu`, `tempat`, `deskripsi`, `kategori`, `arsip`) VALUES
+(4, 'Sabtu', '2021-06-12', '15:00', 'Sanggar Citra Budaya', 'Latihan Remo ya gaes yak', 'semua', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_notifikasi`
+--
+
+CREATE TABLE `tbl_notifikasi` (
+  `id_notif` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `keterangan` text,
+  `waktu` varchar(25) DEFAULT NULL,
+  `status` varchar(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_notifikasi`
+--
+
+INSERT INTO `tbl_notifikasi` (`id_notif`, `id_user`, `keterangan`, `waktu`, `status`) VALUES
+(1, 3, 'Penyewaan anda telah dikonfirmasi dan telah diterima silahkan ambil kostum ke sanggar kami', '2021-06-05 04:22:23pm', '2'),
+(2, 3, 'Terimakasi telah berlangganan', '06/06/2021 09:46', '2'),
+(3, 4, 'Penyewaan anda telah dikonfirmasi dan telah diterima silahkan ambil kostum ke sanggar kami', '2021-06-06 08:37:32am', '2'),
+(4, 4, 'anda akan mengikuti event terdekat silahkan untuk mengikuti latihan untuk kegiatan event', '2021-06-09 04:21:26pm', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_penyewaan`
+--
+
+CREATE TABLE `tbl_penyewaan` (
+  `id_penyewaan` varchar(50) NOT NULL,
+  `id_costume` int(11) DEFAULT NULL,
+  `tanggal_sewa` varchar(25) DEFAULT NULL,
+  `tanggal_kembali` varchar(25) DEFAULT NULL,
+  `total_kostum` varchar(5) DEFAULT NULL,
+  `total_pembayaran` varchar(20) DEFAULT NULL,
+  `metode_pembayaran` varchar(20) DEFAULT NULL,
+  `foto_tf` varchar(500) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_penyewaan`
+--
+
+INSERT INTO `tbl_penyewaan` (`id_penyewaan`, `id_costume`, `tanggal_sewa`, `tanggal_kembali`, `total_kostum`, `total_pembayaran`, `metode_pembayaran`, `foto_tf`, `id_user`, `status`) VALUES
+('11062021-190', 2, '12/Juni/2021', '13/Juni/2021', '3', '90000', 'BCA 009201901920', 'contoh.jpg', 3, '1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_profile`
 --
 
@@ -115,7 +210,7 @@ CREATE TABLE `tbl_site` (
 --
 
 INSERT INTO `tbl_site` (`id_site`, `name_site`, `since_site`, `owner_site`, `address_site`, `email_site`, `logo_site`, `created_at`, `updated_at`) VALUES
-(1, 'Sanggar', 2000, 'Chusnul Chowatini S.Sn', 'Jember, Mangli Lingk. Tanjung', 'citrabudaya123@gmail.com', 'logo.jpg', '2021-04-26 02:00:00', '2021-04-26 01:00:00');
+(1, 'SANGGAR TARI CITRA BUDAYA', 2000, 'Chusnul Chowatini S.Sn', 'Jember, Mangli Lingk. Tanjung', 'citrabudaya123@gmail.com', NULL, '2021-04-26 02:00:00', '2021-04-26 01:00:00');
 
 -- --------------------------------------------------------
 
@@ -158,7 +253,8 @@ CREATE TABLE `tbl_training` (
 --
 
 INSERT INTO `tbl_training` (`id_training`, `date_training`, `hour_training`, `type_training`, `type_age`, `event_id`) VALUES
-(13, '2021-04-23', '18:33:00', 'event', 'adult', 10);
+(13, '2021-04-23', '18:33:00', 'event', 'adult', 10),
+(14, '2021-06-12', '19:00:00', 'event', 'adult', 11);
 
 -- --------------------------------------------------------
 
@@ -202,7 +298,14 @@ CREATE TABLE `tb_jenis_tari` (
   `id` int(11) NOT NULL,
   `jenis_tari` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
--- Error reading data for table sanggar.tb_jenis_tari: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `sanggar`.`tb_jenis_tari`' at line 1
+
+--
+-- Dumping data for table `tb_jenis_tari`
+--
+
+INSERT INTO `tb_jenis_tari` (`id`, `jenis_tari`) VALUES
+(1, 'Tari Tradisi'),
+(2, 'Tari Kreasi');
 
 -- --------------------------------------------------------
 
@@ -224,7 +327,6 @@ CREATE TABLE `tb_kostume` (
 --
 
 INSERT INTO `tb_kostume` (`id_costume`, `nama`, `foto`, `deskripsi`, `harga_sewa`, `id`) VALUES
-(1, 'Tari Remo', '1622465512.jpg', 'Jarik, Sarung, dan Kece', '35000', 1),
 (2, 'Tari Reog', '1622465599.jpg', 'Celana, Topeng', '30000', 1);
 
 -- --------------------------------------------------------
@@ -264,18 +366,8 @@ CREATE TABLE `tb_token` (
 --
 -- Table structure for table `tb_trans_sewa`
 --
-
-CREATE TABLE `tb_trans_sewa` (
-  `id_penyewaan` varchar(20) NOT NULL,
-  `id_costume` int(11) DEFAULT NULL,
-  `tanggal_sewa` date DEFAULT NULL,
-  `tanggal_kembali` date DEFAULT NULL,
-  `total_kostum` char(5) DEFAULT NULL,
-  `total_pembayaran` varchar(20) DEFAULT NULL,
-  `metode_pembayaran` varchar(5) DEFAULT NULL,
-  `foto_tf` varchar(500) DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Error reading structure for table sanggar.tb_trans_sewa: #1932 - Table 'sanggar.tb_trans_sewa' doesn't exist in engine
+-- Error reading data for table sanggar.tb_trans_sewa: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `sanggar`.`tb_trans_sewa`' at line 1
 
 -- --------------------------------------------------------
 
@@ -304,11 +396,18 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id_user`, `nama_lengkap`, `username`, `email`, `alamat`, `no_telepon`, `jenis_kelamin`, `kategori`, `status`, `password`, `aktif`, `date_created`) VALUES
 (3, 'Deny Fajar Indra', 'deny', 'denyfajar12@gmail.com', 'jl sparman no 1 jember', '082132881252', 'pria', 'Dewasa-Remaja', 'umum', 'ardiyan16', '1', '00:00:00'),
-(4, 'skyline', 'skylinee', 'skylineardi@gmail.com', 'Jember Jawa Timur', '082132881000', 'pria', 'Dewasa-Remaja', 'umum', 'abc', '1', '00:00:00');
+(4, 'skyline', 'skylinee', 'skylineardi@gmail.com', 'Jember Jawa Timur', '082132881000', 'pria', 'Anak-Anak', 'anggota sanggar', 'abc', '1', '00:00:00'),
+(5, 'Ega Kustian', 'ega', 'egakustian12@gmail.com', 'jenggawah', '081213666791', 'pria', 'Dewasa-Remaja', 'anggota sanggar', '123', '1', '00:00:00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_absensi`
+--
+ALTER TABLE `tbl_absensi`
+  ADD PRIMARY KEY (`id_absensi`);
 
 --
 -- Indexes for table `tbl_achievement`
@@ -321,6 +420,24 @@ ALTER TABLE `tbl_achievement`
 --
 ALTER TABLE `tbl_event`
   ADD PRIMARY KEY (`id_event`);
+
+--
+-- Indexes for table `tbl_jadwal`
+--
+ALTER TABLE `tbl_jadwal`
+  ADD PRIMARY KEY (`id_jadwal`);
+
+--
+-- Indexes for table `tbl_notifikasi`
+--
+ALTER TABLE `tbl_notifikasi`
+  ADD PRIMARY KEY (`id_notif`);
+
+--
+-- Indexes for table `tbl_penyewaan`
+--
+ALTER TABLE `tbl_penyewaan`
+  ADD PRIMARY KEY (`id_penyewaan`);
 
 --
 -- Indexes for table `tbl_profile`
@@ -371,12 +488,6 @@ ALTER TABLE `tb_token`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_trans_sewa`
---
-ALTER TABLE `tb_trans_sewa`
-  ADD PRIMARY KEY (`id_penyewaan`);
-
---
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
@@ -385,6 +496,12 @@ ALTER TABLE `tb_user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_absensi`
+--
+ALTER TABLE `tbl_absensi`
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_achievement`
@@ -397,6 +514,18 @@ ALTER TABLE `tbl_achievement`
 --
 ALTER TABLE `tbl_event`
   MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tbl_jadwal`
+--
+ALTER TABLE `tbl_jadwal`
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_notifikasi`
+--
+ALTER TABLE `tbl_notifikasi`
+  MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_profile`
@@ -414,7 +543,7 @@ ALTER TABLE `tbl_trainer`
 -- AUTO_INCREMENT for table `tbl_training`
 --
 ALTER TABLE `tbl_training`
-  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
@@ -444,13 +573,13 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT for table `tb_token`
 --
 ALTER TABLE `tb_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
