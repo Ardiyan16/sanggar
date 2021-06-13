@@ -9,6 +9,11 @@ class PenyewaanModel extends CI_Model
         return $this->db->get($this->tabel)->result();
     }
 
+    public function id($id)
+    {   
+        return $this->db->get_where($this->tabel, ['id_penyewaan' => $id])->row();
+    }
+
     public function v_penyewaan()
     {
         $this->db->select('*');

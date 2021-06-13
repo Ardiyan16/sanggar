@@ -12,12 +12,12 @@ class Tentang extends CI_Controller
         $this->load->model('AboutModel');
         $this->load->model('DashboardModel');
         $this->load->library('form_validation');
-        if (empty($this->session->userdata('email'))) {
-            echo "<script>
-                alert('Anda harus login terlebih dahulu');
-                window.location.href = '" . base_url('Auth/login_user') . "';
-            </script>"; //Url tujuan
-        }
+        // if (empty($this->session->userdata('email'))) {
+        //     echo "<script>
+        //         alert('Anda harus login terlebih dahulu');
+        //         window.location.href = '" . base_url('Auth/login_user') . "';
+        //     </script>"; //Url tujuan
+        // }
     }
 
     public function index()

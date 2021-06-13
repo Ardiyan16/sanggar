@@ -29,6 +29,15 @@ class Penyewaan extends CI_Controller
         $this->load->view('backoffice/style/v_footer');
     }
 
+    public function v_kirim_notif($id)
+    {
+        $this->load->view('backoffice/style/v_header');
+        $this->load->view('backoffice/v_sidebar');
+        $data['id'] = $this->PenyewaanModel->id($id);
+        $this->load->view('backoffice/page/v_kirim_notif', $data);
+        $this->load->view('backoffice/style/v_footer');
+    }
+
     public function terima_sewa($id)
     {
         $this->PenyewaanModel->update_status($id);
@@ -76,5 +85,21 @@ class Penyewaan extends CI_Controller
         $data['sewa_new'] = $this->PenyewaanModel->riwayat();
         $this->load->view('backoffice/page/riwayat/v_riwayat_penyewaan', $data);
         $this->load->view('backoffice/style/v_footer');
+    }
+
+    public function kirim_notifikasi()
+    {
+        $waktu = date("Y-m-d h:i:sa");
+        $data = array(
+            'id_user' => $this->input->post('id_user'),
+            'keterangan' => $this->input->post('keterangan'),
+            'waktu' => $waktu,
+            'status' => '1',
+        );
+        $this->PenyewaanModel->kirim_notif($data);
+        echo "<script>
+        alert('Notifikasi berhasil dikirimkan');
+        window.location.href = '" . base_url('backoffice/penyewaan') . "';
+    </script>";
     }
 }

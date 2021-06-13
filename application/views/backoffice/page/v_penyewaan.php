@@ -59,6 +59,7 @@
                                             <td>
                                                 <a class="btn btn-warning  btn-sm text-white" data-toggle="modal" href="#modalView<?= $d->id_penyewaan ?>"><i class="fas fa-eye"></i></a>
                                                 <a class="btn btn-info btn-sm " href="<?= base_url('backoffice/penyewaan/terima_sewa/' . $d->id_penyewaan) ?>"><i class="fas fa-check"></i></a>
+                                                <a class="btn btn-success btn-sm " href="<?= base_url('backoffice/penyewaan/v_kirim_notif/' . $d->id_penyewaan) ?>"><i class="fas fa-bell"></i></a>
                                                 <button class="btn btn-danger btn-sm " data-toggle="modal" data-target="#modalDelete<?= $d->id_penyewaan ?>"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -177,6 +178,30 @@
             </div>
         </div>
     </div>
-</div>
 
+    <?php foreach ($sewa as $s) { ?>
+        <div class="modal fade" id="modalnotif<?= $s->id_penyewaan ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="post" action="<?= base_url('backoffice/penyewaan/kirim_notifikasi') ?>">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Kirim Notifikasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label>Pesan</label>
+                            <input type="hidden" value="<?= $s->id_user ?>" name="id_user">
+                            <textarea class="form-control" name="keterangan" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 </div>

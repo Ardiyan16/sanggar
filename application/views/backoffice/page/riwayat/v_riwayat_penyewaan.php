@@ -39,7 +39,6 @@
                                         <th>metode pembayaran</th>
                                         <th>foto transfer</th>
                                         <th>nama penyewa</th>
-                                        <th>opsi</th>
                                     </tr>
                                 </thead>
                                 <tbody>

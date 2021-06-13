@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <form>
+                    <form method="post" action="<?= base_url('frontoffice/penyewaan') ?>">
                         <div class="form-group" style="margin-top: 50px; margin-left: 30px;">
-                            <input type="text" class="form-control-md-4">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Search</button>
+                            <input type="text" name="search" class="form-control-md-4">
+                            <input type="submit" class="btn btn-primary" name="submit">
                         </div>
                     </form>
                     <div class="text-right" style="text-align: left;">

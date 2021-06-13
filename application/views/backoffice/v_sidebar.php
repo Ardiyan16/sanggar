@@ -13,10 +13,9 @@
                 <img src="<?= base_url() ?>assets/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Super Admin</a>
+                <a href="#" class="d-block"><?= $this->session->userdata('username') ?></a>
             </div>
         </div>
-
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -48,12 +47,6 @@
                             <a href="<?= base_url() ?>backoffice/event" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Event</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url() ?>backoffice/event/training" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Training Event</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -145,10 +138,8 @@
                                 <p>Riwayat Kegiatan</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -39,15 +39,43 @@ class Auth extends CI_Controller
 			$this->load->view('Auth/page/v_login');
 			$this->load->view('Auth/style/v_footer');
 		} else {
-			$post = $this->input->post();
-			$username = $post['username'];
-			$password = $post['password'];
-			$qry = $this->AuthModel->cekAuth($username, $password);
-			if ($qry) {
-				redirect('backoffice/dashboard');
+			$this->login_admin();
+		}
+	}
+
+	private function login_admin()
+	{
+		$username = htmlspecialchars($this->input->post('username', TRUE), ENT_QUOTES);
+		$password = htmlspecialchars($this->input->post('password', TRUE), ENT_QUOTES);
+
+		$user = $this->db->get_where('tbl_user', ['username' => $username])->row_array();
+		$cekpass = $this->db->get_where('tbl_user', array('password' => $password));
+
+
+		//jika usernya terdaftar
+
+		if ($username == $user['username']) {
+			if ($password == $user['password']) {
+				$data = [
+					'email' => $user['email'],
+					'username' => $user['username'],
+				];
+				$this->session->set_userdata($data);
+				if ($user['is_active'] == '1') {
+					redirect('backoffice/dashboard');
+				} else {
+					$this->session->unset_userdata('email');
+					$this->session->unset_userdata('username');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Anda gagal login!</div>');
+					redirect('Auth');
+				}
 			} else {
-				echo ("Password Salah");
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password yang anda masukkan salah!</div>');
+				redirect('Auth');
 			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf username yang anda masukkan salah!</div>');
+			redirect('Auth');
 		}
 	}
 

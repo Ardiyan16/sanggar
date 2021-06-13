@@ -4,13 +4,15 @@ class CostumeModel extends CI_Model
 {
     private $tabel = 'tb_kostume';
 
-    public function view()
+    public function view($search)
     {
+        if($search) {
+            $this->db->like('nama', $search);
+        }
         $this->db->select('*');
         $this->db->from('tb_kostume');
         $this->db->join('tb_jenis_tari', 'tb_jenis_tari.id = tb_kostume.id');
         return $this->db->get()->result();
-        //return $this->db->get($this->tabel)->result();
     }
 
     public function get_tari()
