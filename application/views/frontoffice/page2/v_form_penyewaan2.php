@@ -36,7 +36,7 @@
                 <div class="col-md-8">
                     <div class="name">
                         <h4><?= $sewa->nama ?></h4>
-                        Harga Sewa/Hari<input type="text" id="hrg" value="<?= $sewa->harga_sewa ?>" readonly class="form-control md-4">
+                        Harga Sewa<input type="text" id="hrg" value="<?= $sewa->harga_sewa ?>" readonly class="form-control md-4">
                     </div>
                     <div class="hr-line-dashed"></div>
                     <form action="<?= base_url('frontoffice/penyewaan/update') ?>" method="post" enctype="multipart/form-data" class="main_form">

@@ -36,7 +36,7 @@
                 <div class="col-md-8">
                     <div class="name">
                         <h4><?= $view->nama ?></h4>
-                        Harga Sewa/Hari<input type="text" id="hrg" value="<?= $view->harga_sewa ?>" readonly class="form-control md-4">
+                        Harga Sewa<input type="text" id="hrg" value="<?= $view->harga_sewa ?>" readonly class="form-control md-4">
                     </div>
                     <div class="hr-line-dashed"></div>
                     <form action="<?= base_url('frontoffice/penyewaan/save') ?>" method="post" class="main_form">
@@ -66,10 +66,10 @@
                                 <!--   -->
                             </div>
 
-                            <div class="col-md-12 form-group">
+                            <!-- <div class="col-md-12 form-group">
                                 <label>Selisih Hari</label>
                                 <input type="text" id="selisih" class="form-control" readonly>
-                            </div>
+                            </div> -->
 
                             <div class="col-md-12 form-group">
                                 <label>Total Kostum</label>
@@ -97,10 +97,10 @@
             $(document).ready(function() {
                 $("#hrg, #jml_kostum").keyup(function() {
                     var harga = $("#hrg").val();
-                    var selisih = $("#selisih").val();
+                    // var selisih = $("#selisih").val();
                     var jumlah = $("#jml_kostum").val();
 
-                    var total = parseInt(harga) * parseInt(selisih) * parseInt(jumlah);
+                    var total = parseInt(harga) * parseInt(jumlah);
                     $("#total_byr").val(total);
                     console.log(Number(total));
                 });
