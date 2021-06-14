@@ -6,9 +6,17 @@ class CostumeModel extends CI_Model
 
     public function view($search)
     {
-        if($search) {
+        if ($search) {
             $this->db->like('nama', $search);
         }
+        $this->db->select('*');
+        $this->db->from('tb_kostume');
+        $this->db->join('tb_jenis_tari', 'tb_jenis_tari.id = tb_kostume.id');
+        return $this->db->get()->result();
+    }
+
+    public function get()
+    {
         $this->db->select('*');
         $this->db->from('tb_kostume');
         $this->db->join('tb_jenis_tari', 'tb_jenis_tari.id = tb_kostume.id');
@@ -34,7 +42,6 @@ class CostumeModel extends CI_Model
         $this->harga_sewa = $post['harga_sewa'];
         $this->id = $post['id'];
         $this->db->insert($this->tabel, $this);
-
     }
 
     private function _uploadImage()
@@ -72,7 +79,6 @@ class CostumeModel extends CI_Model
         $this->id = $post['id'];
 
         $this->db->update($this->tabel, $this, array('id_costume' => $post['id_costume']));
-
     }
 
     public function delete($id)
@@ -89,5 +95,4 @@ class CostumeModel extends CI_Model
             return array_map('unlink', glob(FCPATH . "upload/profil/$filename.*"));
         }
     }
-
 }

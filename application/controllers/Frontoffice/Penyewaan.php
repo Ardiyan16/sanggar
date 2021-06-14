@@ -101,7 +101,7 @@ class Penyewaan extends CI_Controller
     {
         $id = $this->session->userdata('id_user');
         $data['judul'] = 'Riwayat';
-        $data['kostum'] = $this->CostumeModel->view();
+        $data['kostum'] = $this->CostumeModel->get();
         $data['data'] = $this->PenyewaanModel->v_riwayat($id);
         $data['sewa'] = $this->PenyewaanModel->all();
         $this->load->view('frontoffice/style/v_header', $data);
