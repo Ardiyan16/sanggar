@@ -25,7 +25,7 @@ class Costume extends CI_Controller
     {
         $this->load->view('backoffice/style/v_header');
         $this->load->view('backoffice/v_sidebar');
-        $data['data'] = $this->CostumeModel->view();
+        $data['data'] = $this->CostumeModel->get();
         $this->load->view('backoffice/page/costume/v_index', $data);
         $this->load->view('backoffice/style/v_footer');
     }
