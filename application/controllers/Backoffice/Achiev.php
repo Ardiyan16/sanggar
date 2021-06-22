@@ -111,7 +111,7 @@ class Achiev extends CI_Controller
     private function _uploadImage()
     {
         $config['upload_path']          =  './assets/images/achiev';
-        $config['allowed_types']        = 'gif|jpg|png|pdf';
+        $config['allowed_types']        = 'gif|jpg|jpeg|png|pdf';
         $config['overwrite']            = true;
         $config['max_size']             = 5048; // 5MB
         $config['overwrite']            = true;
