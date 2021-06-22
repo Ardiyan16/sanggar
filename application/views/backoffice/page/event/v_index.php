@@ -134,7 +134,7 @@
 
                             <div class=" row">
                                 <div class="form-group col">
-                                    <label for="acara">Tanggal Event</label>
+                                    <label for="acara">Tanggal Latihan</label>
                                     <input type="date" name="date_training" required class="form-control" id="acara" placeholder="Nama Acara">
                                     <input type="" hidden name="event_id" required class="form-control" id="acara" value="<?= $a->id_event ?>" placeholder="Nama Acara">
                                 </div>

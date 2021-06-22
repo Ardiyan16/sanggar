@@ -46,6 +46,7 @@
                                     <input type="text" name="harga_sewa" class="form-control" id="exampleInputEmail1" placeholder="Enter Harga">
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Jenis Tari</label>
                                     <select name="id" class="form-control">
                                         <option>--Jenis Tari--</option>
                                         <?php foreach ($data as $d) : ?>

@@ -48,20 +48,18 @@ class CostumeModel extends CI_Model
     {
         $config['upload_path']          =  './assets/images/costume';
         $config['allowed_types']        = 'gif|jpg|jpeg|png|pdf';
+        $nama_lengkap = $_FILES['foto']['name'];
+        $config['file_name']            = $nama_lengkap;
         $config['overwrite']            = true;
-        $config['max_size']             = 5048; // 5MB
-        $config['overwrite']            = true;
-        $config['file_name']            = time() . $_FILES["userfiles"]['name'];
-
+        $config['max_size']             = 3024;
 
         $this->upload->initialize($config);
         $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('foto')) {
-            $error = $this->upload->display_errors();
-            print_r($error);
-        } else {
-            return $this->upload->data('file_name');
+
+        if ($this->upload->do_upload('foto')) {
+            return $this->upload->data("file_name");
         }
+        print_r($this->upload->display_errors());
     }
 
     public function update()
