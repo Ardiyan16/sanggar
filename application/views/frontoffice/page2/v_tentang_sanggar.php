@@ -3,7 +3,7 @@
         <div class="row d_flex">
             <div class="col-md-5">
                 <div class="about_img text_align_center">
-                    <figure><img src="<?= base_url() ?>assets/images/img_dance.png" alt="#" /></figure>
+                    <figure><img src="<?= base_url() ?>assets/images/foto_tunggal.png" alt="#" /></figure>
                 </div>
             </div>
             <div class="col-md-7">

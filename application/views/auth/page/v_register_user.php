@@ -18,7 +18,7 @@
             <div class="card login-card">
                 <div class="row no-gutters">
                     <div class="col-md-5">
-                        <img src="<?= base_url() ?>assets/images/img_dance.png" alt="login" class="login-card-img">
+                        <img src="<?= base_url() ?>assets/images/foto_tunggal.png" alt="login" class="login-card-img">
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">

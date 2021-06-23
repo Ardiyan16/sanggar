@@ -1,5 +1,5 @@
       <!-- end header -->
-      <div class="full_bg" style="background-image: url(<?= base_url('assets/user/images/tarian.jpg'); ?>)">
+      <div class="full_bg" style="background-image: url(<?= base_url('assets/user/images/beranda.jpg'); ?>)">
           <!-- header inner -->
           <div class="section">
               <!-- carousel code -->
