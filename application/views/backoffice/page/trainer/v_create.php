@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Nama</label>
-                                    <textarea type="text" name="name_trainer" class="form-control" id="exampleInputPassword1" placeholder="Password"></textarea>
+                                    <input type="text" name="name_trainer" class="form-control" id="exampleInputPassword1" placeholder="Nama">
                                 </div>
                             </div>
                             <!-- /.card-body -->
