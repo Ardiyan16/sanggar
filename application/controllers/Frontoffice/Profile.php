@@ -12,6 +12,7 @@ class Profile extends CI_Controller
         $this->load->model('AboutModel');
         $this->load->library('form_validation');
         $this->load->model('ProfileModel');
+        $this->load->model('DashboardModel');
         if (empty($this->session->userdata('email'))) {
             echo "<script>
                 alert('Anda harus login terlebih dahulu');
@@ -22,10 +23,12 @@ class Profile extends CI_Controller
 
     public function index()
     {
+        $id = $this->session->userdata('id_user');
         $data['judul'] = 'Profile';
         $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result();
         $data['profile'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['ep'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['jml_notif'] = $this->DashboardModel->jml_notif($id);
         $this->load->view('frontoffice/style/v_header', $data);
         $this->load->view('frontoffice/style/v_navbar_user2', $data);
         $this->load->view('frontoffice/page2/v_profile', $data);
