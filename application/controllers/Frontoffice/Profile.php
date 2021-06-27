@@ -30,7 +30,7 @@ class Profile extends CI_Controller
         $data['ep'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['jml_notif'] = $this->DashboardModel->jml_notif($id);
         $this->load->view('frontoffice/style/v_header', $data);
-        $this->load->view('frontoffice/style/v_navbar_user2', $data);
+        $this->load->view('frontoffice/style/v_navbarr', $data);
         $this->load->view('frontoffice/page2/v_profile', $data);
         $this->load->view('frontoffice/style/v_footer', $data);
     }

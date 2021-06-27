@@ -51,7 +51,7 @@
                                 <input class="contactus" placeholder="" value="<?= $user['id_user'] ?>" type="text" hidden name="id_user">
                                 <input class="contactus" placeholder="" value="<?= $view->id_costume ?>" type="text" hidden name="id_costume">
                                 <div class="input-group date" id="tgl1">
-                                    <input type="text" class="form-control" name="tanggal_sewa" />
+                                    <input type="text" class="form-control" id="hari1" name="tanggal_sewa" />
                                     <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
                                 </div>
                                 <!-- <input class="contactus" placeholder="" id="tgl1" type="date" name="tanggal_sewa"> -->
@@ -59,7 +59,7 @@
                             <div class="col-md-12 form-group">
                                 <label>Tanggal Kembali</label>
                                 <div class="input-group date" id="tgl2">
-                                    <input type="text" class="form-control" name="tanggal_kembali" />
+                                    <input type="text" class="form-control" id="hari2" name="tanggal_kembali" />
                                     <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
                                 </div>
                                 <!-- <input class="contactus" id="tgl2" placeholder="" type="date" name="tanggal_kembali"> -->
@@ -108,15 +108,33 @@
         </script>
 
         <script>
+            var dateToday = new Date();
+            var dates = $("#hari1, #hari2").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 3,
+                minDate: dateToday,
+                onSelect: function(selectedDate) {
+                    var option = this.id == "from" ? "minDate" : "maxDate",
+                        instance = $(this).data("datepicker"),
+                        date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+                    dates.not(this).datepicker("option", option, date);
+                }
+            });
+        </script>
+
+        <script>
             $(function() {
                 $('#tgl1').datetimepicker({
                     locale: 'id',
+                    minDate: dateToday,
                     format: 'DD/MMMM/YYYY'
                 });
 
                 $('#tgl2').datetimepicker({
                     useCurrent: false,
                     locale: 'id',
+                    minDate: dateToday,
                     format: 'DD/MMMM/YYYY'
                 });
 
