@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kostume</h1>
+                    <h1 class="m-0">Riwayat Penyewaan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Website Utama</a></li>
-                        <li class="breadcrumb-item active">Kostum</li>
+                        <li class="breadcrumb-item active">Riwayat Penyewaan</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,7 +22,7 @@
                     <?= $this->session->flashdata('success') ?>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Kostum</h3>
+                            <h3 class="card-title">Riwayat Penyewaan</h3>
                             <a class="btn btn-success float-right" href="<?= base_url() ?>backoffice/costume/create"><i class="fas fa-edit"></i> Tambah</a>
                         </div>
                         <!-- /.card-header -->
