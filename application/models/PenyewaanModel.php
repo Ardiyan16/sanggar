@@ -10,7 +10,7 @@ class PenyewaanModel extends CI_Model
     }
 
     public function id($id)
-    {   
+    {
         return $this->db->get_where($this->tabel, ['id_penyewaan' => $id])->row();
     }
 
@@ -107,7 +107,7 @@ class PenyewaanModel extends CI_Model
         $nama_lengkap = $_FILES['foto_tf']['name'];
         $config['file_name']            = $nama_lengkap;
         $config['overwrite']            = true;
-        $config['max_size']             = 3024;
+        $config['max_size']             = 10240;
 
         $this->upload->initialize($config);
         $this->load->library('upload', $config);
