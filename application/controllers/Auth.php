@@ -331,6 +331,7 @@ class Auth extends CI_Controller
 			'kategori' => $this->input->post('kategori'),
 			'status' => $this->input->post('status'),
 			'password' => $this->input->post('password'),
+			'foto_profile' => 'user.png',
 			'aktif' => 0,
 			'date_created' => time(),
 		];
