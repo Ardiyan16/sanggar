@@ -32,7 +32,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
-                            Website Utama
+                            Halaman Utama
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -40,7 +40,7 @@
                         <li class="nav-item">
                             <a href="<?= base_url() ?>backoffice/achiev" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Achiev</p>
+                                <p>Arsip</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -58,7 +58,7 @@
                         <li class="nav-item">
                             <a href="<?= base_url('backoffice/about') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>About</p>
+                                <p>Tentang</p>
                             </a>
                         </li>
                     </ul>
