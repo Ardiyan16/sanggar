@@ -36,7 +36,7 @@ class Penyewaan extends CI_Controller
         $data['judul'] = 'Penyewaan Kostum';
         $data['kostum'] = $this->CostumeModel->view($data['search']);
         $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->row_array();
-        $data['proses'] = $this->db->get_where('tbl_penyewaan', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->row_array();
+        $data['proses'] = $this->db->get_where('tbl_penyewaan', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result_array();
         $this->load->view('frontoffice/style/v_header', $data);
         $this->load->view('frontoffice/style/v_navbar2', $data);
         $this->load->view('frontoffice/page2/v_penyewaan', $data);

@@ -48,27 +48,29 @@
             </div>
             <div class="modal-body">
                 <table class="table" width="70%">
-                        <thead>
-                            <tr>
-                                <th scope="col">Tanggal Sewa</th>
-                                <th scope="col">Tanggal Kembali</th>
-                                <th scope="col">Total Kostum</th>
-                                <th scope="col">Total Pembayaran</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <thead>
+                        <tr>
+                            <th scope="col">Tanggal Sewa</th>
+                            <th scope="col">Tanggal Kembali</th>
+                            <th scope="col">Total Kostum</th>
+                            <th scope="col">Total Pembayaran</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($proses as $proses) : ?>
                             <tr>
                                 <td><?= $proses['tanggal_sewa'] ?></td>
                                 <td><?= $proses['tanggal_kembali'] ?></td>
                                 <td><?= $proses['total_kostum'] ?></td>
                                 <td><?= $proses['total_pembayaran'] ?></td>
                                 <td>
-                                    <a href="<?= base_url('Frontoffice/penyewaan/form_sewa2/'. $proses['id_penyewaan']) ?>" class="btn btn-primary">Lanjutkan Proses</a>
+                                    <a href="<?= base_url('Frontoffice/penyewaan/form_sewa2/' . $proses['id_penyewaan']) ?>" class="btn btn-primary">Lanjutkan Proses</a>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
