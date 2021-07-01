@@ -139,7 +139,7 @@
                                     <input type="" hidden name="event_id" required class="form-control" id="acara" value="<?= $a->id_event ?>" placeholder="Nama Acara">
                                 </div>
                                 <div class="form-group col">
-                                    <label for="exampleInputPassword1">Waktu Event</label>
+                                    <label for="exampleInputPassword1">Waktu Latihan</label>
                                     <input type="time" name="hour_training" class="form-control" id="exampleInputPassword1" placeholder="Date">
                                 </div>
                             </div>

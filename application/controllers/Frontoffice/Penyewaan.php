@@ -23,11 +23,10 @@ class Penyewaan extends CI_Controller
 
     public function index()
     {
-        if ($this->input->post('submit')) {
-            $data['search'] = $this->input->post('search');
-            $this->session->set_userdata('search', $data['search']);
+        if ($this->input->get('submit')) {
+            $data['search'] = $this->input->get('search');
         } else {
-            $data['search'] = $this->session->userdata('search');
+            $data['search'] = $this->session->unset_userdata('search');
         }
         // $this->db->like('nama', $data['search']);
         // $this->db->from('tb_kostume');

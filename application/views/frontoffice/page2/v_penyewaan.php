@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <form method="post" action="<?= base_url('frontoffice/penyewaan') ?>">
+                    <form method="get" action="<?= base_url('frontoffice/penyewaan') ?>">
                         <div class="form-group" style="margin-top: 50px; margin-left: 30px;">
                             <input type="text" name="search" class="form-control-md-4">
                             <input type="submit" class="btn btn-primary" name="submit">
