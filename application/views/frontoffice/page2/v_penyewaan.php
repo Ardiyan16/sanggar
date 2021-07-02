@@ -2,11 +2,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div>
+                <div class="col12">
                     <form method="get" action="<?= base_url('frontoffice/penyewaan') ?>">
                         <div class="form-group" style="margin-top: 50px; margin-left: 30px;">
-                            <input type="text" name="search" class="form-control-md-4">
+                            <input type="text" name="search" class="form-control-md-4" placeholder="Cari">
                             <input type="submit" class="btn btn-primary" name="submit">
+                        </div>
+                    </form>
+                    <form method="get" action="<?= base_url('frontoffice/penyewaan') ?>">
+                        <div class="form-group" style="margin-left: 30px;">
+                            <select name="kategori">
+                                <option>-- Pilih Kategori --</option>
+                                <option value="1">Tari Tradisi</option>
+                                <option value="2">Tari Kreasi</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Pilih</button>
                         </div>
                     </form>
                     <div class="text-right" style="text-align: left;">

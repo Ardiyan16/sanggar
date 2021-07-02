@@ -4,10 +4,13 @@ class CostumeModel extends CI_Model
 {
     private $tabel = 'tb_kostume';
 
-    public function view($search)
+    public function view($search, $filter)
     {
         if ($search) {
             $this->db->like('nama', $search);
+        }
+        if ($filter) {
+            $this->db->where('tb_kostume.id', $filter);
         }
         $this->db->select('*');
         $this->db->from('tb_kostume');
@@ -15,11 +18,12 @@ class CostumeModel extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function get()
+    public function get($filter)
     {
         $this->db->select('*');
         $this->db->from('tb_kostume');
         $this->db->join('tb_jenis_tari', 'tb_jenis_tari.id = tb_kostume.id');
+        $this->db->where('tb_kostume.id', $filter);
         return $this->db->get()->result();
     }
 

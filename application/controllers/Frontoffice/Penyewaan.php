@@ -32,9 +32,9 @@ class Penyewaan extends CI_Controller
         // $this->db->from('tb_kostume');
         // $this->db->join('tb_jenis_tari', 'tb_jenis_tari.id = tb_kostume.id');
 
-
+        $filter = $this->input->get('kategori');
         $data['judul'] = 'Penyewaan Kostum';
-        $data['kostum'] = $this->CostumeModel->view($data['search']);
+        $data['kostum'] = $this->CostumeModel->view($data['search'], $filter);
         $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->row_array();
         $data['proses'] = $this->db->get_where('tbl_penyewaan', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result_array();
         $this->load->view('frontoffice/style/v_header', $data);
