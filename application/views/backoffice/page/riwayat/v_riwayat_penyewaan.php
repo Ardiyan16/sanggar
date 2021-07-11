@@ -23,7 +23,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Riwayat Penyewaan</h3>
-                            <a class="btn btn-success float-right" href="<?= base_url() ?>backoffice/costume/create"><i class="fas fa-edit"></i> Tambah</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
