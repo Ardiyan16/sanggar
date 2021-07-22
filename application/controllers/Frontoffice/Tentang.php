@@ -24,7 +24,7 @@ class Tentang extends CI_Controller
     {
         $data['judul'] = 'Tentang';
         $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result();
-        $data['site'] = $this->db->get_where('tbl_site')->result();
+        $data['site'] = $this->db->get('tbl_site')->result();
         $data['jml_pelatih'] = $this->db->count_all('tbl_trainer');
         $data['jml_anggota'] = $this->DashboardModel->countUser();
         $data['pelatih'] = $this->DashboardModel->pelatih();

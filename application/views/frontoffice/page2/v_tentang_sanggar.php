@@ -34,6 +34,7 @@
                 </div>
             </div>
             <?php foreach ($site as $s) { ?>
+                <img src="<?= base_url('assets/images/' . $s->logo_site) ?>" style="width: 200px; height: 200px; margin-left: 40%; margin-bottom: 50px;;" class="img-fluid" />
                 <table class="table">
                     <tbody>
                         <tr class="table-secondary">

@@ -57,7 +57,7 @@ class About extends CI_Controller
             $this->session->set_flashdata('success', '<div class="alert alert-success">
             <strong>Success!</strong> Data berhasil diubah.
             </div>');
-            redirect('backoffice/achiev');
+            redirect('backoffice/about');
         } else {
 
             $this->session->set_flashdata('success', '<div class="alert alert-danger">
