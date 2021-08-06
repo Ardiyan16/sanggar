@@ -37,6 +37,9 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><?= $k->deskripsi ?></li>
                         </ul>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Rp. <?= $k->harga_sewa ?> / Baju</li>
+                        </ul>
                         <div class="card-body">
                             <a href="<?= base_url('Frontoffice/Penyewaan/form_sewa/' . $k->id_costume) ?>" class="btn btn-primary">Tambah</a>
                         </div>

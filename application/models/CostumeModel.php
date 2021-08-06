@@ -51,7 +51,7 @@ class CostumeModel extends CI_Model
     private function _uploadImage()
     {
         $config['upload_path']          =  './assets/images/costume';
-        $config['allowed_types']        = 'gif|jpg|jpeg|png|pdf';
+        $config['allowed_types']        = 'gif|jpg|jpeg|png';
         $nama_lengkap = $_FILES['foto']['name'];
         $config['file_name']            = $nama_lengkap;
         $config['overwrite']            = true;

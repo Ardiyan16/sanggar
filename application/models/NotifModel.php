@@ -11,7 +11,8 @@ class NotifModel extends CI_Model
         $this->db->from($this->tabel);
         $this->db->where('id_user', $id);
         $this->db->where('status', 1);
-        return $this->db->get()->result();
+        $this->db->order_by('waktu', 'DESC');
+        return $this->db->get()->result_array();
     }
 
     public function update_status($id)

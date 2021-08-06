@@ -94,59 +94,6 @@
                 </tbody>
             </table>
         </div>
-        <div class="row" style="margin-top: 40px;">
-            <div class="col-md-12">
-                <div class="titlepage text_align_center">
-                    <h2>Anggota Sanggar</h2>
-                    <p>Berikut adalah anggota sanggar dewasa-remaja
-                    </p>
-                </div>
-            </div>
-            <table class="table table-striped" style="margin-bottom: 30px;">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Anggota</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($anggota as $a) {
-                        $no = 1 ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $a->nama_lengkap ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <br>
-            <br>
-            <br>
-            <div class="col-md-12">
-                <div class="titlepage text_align_center">
-                    <!-- <h2>Anggota Sanggar</h2> -->
-                    <p>Berikut adalah anggota sanggar anak-anak
-                    </p>
-                </div>
-            </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Nama Anggota</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($anggota2 as $a) {
-                        $no = 1 ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= $a->nama_lengkap ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
         <div class="row" style="margin-top: 60px;">
             <div class="col-md-12">
                 <div class="titlepage text_align_center">

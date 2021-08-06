@@ -44,12 +44,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url() ?>backoffice/event" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Event</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="<?= base_url() ?>backoffice/costume" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kostum</p>
@@ -103,6 +97,12 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url() ?>backoffice/event" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Event</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="<?= base_url('backoffice/Jadwal') ?>" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>

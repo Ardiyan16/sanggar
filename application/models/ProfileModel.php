@@ -27,7 +27,7 @@ class ProfileModel extends CI_Model
     private function _uploadImage()
     {
         $config['upload_path']          =  './assets/images/foto_profile';
-        $config['allowed_types']        = 'gif|jpg|jpeg|png|pdf';
+        $config['allowed_types']        = 'gif|jpg|jpeg|png';
         $nama_lengkap = $_FILES['foto_profile']['name'];
         $config['file_name']            = $nama_lengkap;
         $config['overwrite']            = true;

@@ -306,9 +306,9 @@ class Auth extends CI_Controller
 	{
 		$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim', ['required' => 'nama lengkap tidak boleh kosong']);
 		$this->form_validation->set_rules('username', 'Username', 'required|trim', ['required' => 'nama pengguna tidak boleh kosong']);
-		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]', ['required' => 'email tidak boleh kosong'], ['is_unique' => 'email telah terdaftar']);
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]', ['is_unique' => 'email anda telah terdaftar']);
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim', ['required' => 'alamat tidak boleh kosong']);
-		$this->form_validation->set_rules('no_telepon', 'No Telepon', 'required|trim|max_length[13]', ['required' => 'No Telepon tidak boleh kosong'], ['max_length' => 'No Telepon tidak boleh lebih dari 13 karakter']);
+		$this->form_validation->set_rules('no_telepon', 'No Telepon', 'required|trim|max_length[13]', ['max_length' => 'No Telepon tidak boleh lebih dari 13 karakter']);
 		$this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'password tidak boleh kosong']);
 		if ($this->form_validation->run() == false) {
 			$this->load->view('Auth/page/v_register_user');

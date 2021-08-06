@@ -25,9 +25,9 @@ class Beranda extends CI_Controller
     {
         $id = $this->session->userdata('id_user');
         $data['judul'] = 'Beranda';
-        $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result_array();
+        //$data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result_array();
         $data['jml_notif'] = $this->DashboardModel->jml_notif($id);
-        // $data['notif'] = $this->NotifModel->get_notif();
+        $data['notif'] = $this->NotifModel->get_notif();
         $this->load->view('frontoffice/style/v_header', $data);
         $this->load->view('frontoffice/style/v_navbar_user', $data);
         $this->load->view('frontoffice/page2/v_beranda_anggota', $data);
@@ -38,6 +38,7 @@ class Beranda extends CI_Controller
     {
         $id = $this->session->userdata('id_user');
         $data['judul'] = 'Beranda';
+        $data['notif'] = $this->NotifModel->get_notif();
         $data['notif'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result_array();
         $data['notif2'] = $this->db->get_where('tbl_notifikasi', ['id_user' => $this->session->userdata('id_user'), 'status' => '1'])->result_array();
         $data['jml_notif'] = $this->DashboardModel->jml_notif($id);

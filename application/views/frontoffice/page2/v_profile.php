@@ -88,8 +88,11 @@
                     </div>
                     <div class="form-group">
                         <label>Upload Foto</label>
-                        <input type="file" name="foto_profile" class="form-control">
-                        <input type="hidden" name="old_foto" value="<?= $ep['foto_profile'] ?>"> 
+                        <input accept="image/*" id="imgInp" type="file" name="foto_profile" class="form-control">
+                        <input type="hidden" name="old_foto" value="<?= $ep['foto_profile'] ?>">
+                    </div>
+                    <div>
+                        <img id="blah" src="#" alt="your image" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -100,3 +103,11 @@
         </div>
     </div>
 </div>
+<script>
+    imgInp.onchange = evt => {
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
+    }
+</script>
